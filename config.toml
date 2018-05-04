@@ -1,0 +1,29 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "Vertcoin Documentation"
+theme = "lit-hub"
+description = "Vertcoin: The People's Coin"
+Paginate = 4
+[Params]
+  RSSLink = "/index.xml"
+  author = "Vertcoin" 
+  github = "vertcoin-project"
+  twitter = "Vertcoin"
+  email = ""
+
+[[menu.main]]
+    name = "Main Site"
+    weight = -100
+    url = "https://vertcoin.org"
+[[menu.main]]
+    name = "Documentation"
+    weight = -100
+    url = "/docs/"
+[[menu.main]]
+		name = "Vertcoin Academy"
+		weight = -100
+		url = ""
+[[menu.main]]
+    name = "Faq"
+    weight = -100
+    url = "/faq/"
