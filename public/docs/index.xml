@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docs on Vertcoin Documentation</title>
+    <title>Docs on Vertcoin Academy</title>
     <link>/docs/</link>
-    <description>Recent content in Docs on Vertcoin Documentation</description>
+    <description>Recent content in Docs on Vertcoin Academy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 04 May 2018 12:46:25 -0500</lastBuildDate>
@@ -12,14 +12,54 @@
     
     
     <item>
-      <title>Getting Started</title>
-      <link>/docs/getting-started/</link>
+      <title>Buying Vertcoin</title>
+      <link>/docs/buying-vertcoin/</link>
       <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
       
-      <guid>/docs/getting-started/</guid>
-      <description>Getting Started What is Vertcoin Vertcoin is a cryptocurrency that focuses on ASIC resistance and the true meaning of decentralisation&amp;hellip; TODO
-Our Mission TODO
-What Do I Need to Get Setup?  Wallet  TODO</description>
+      <guid>/docs/buying-vertcoin/</guid>
+      <description>Signup and Use of Exchanges Coinbase Coinbase is the largest site for buying Bitcoin with fiat (your local currency), and we will be using it for buying Bitcoin.
+Signup To sign up for a Coinbase account go to Coinbase and click signup in the top right corner.
+You will be prompted to enter details such as: your name, your email, your location, etc. When inputting your personal information make sure to make it match the information on your bank account, PayPal, and credit card to prevent issues when adding a payment method.</description>
+    </item>
+    
+    <item>
+      <title>Full Node Setup: Intel NUC</title>
+      <link>/docs/setup-intel-nuc/</link>
+      <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
+      
+      <guid>/docs/setup-intel-nuc/</guid>
+      <description>Why a Vertcoin Full node?  Vertcoin is a digital currency supported by a peer-to-peer network. In order to run efficiently and effectively, it needs peers run by different people&amp;hellip; and the more the better. [1]
+This tutorial will describe how to create a Vertcoin “full node” (a Vertcoin server that contains the full blockchain and propagates transactions throughout the Vertcoin network via peers). This system will not mine for Vertcoins, however it is possible to setup a stable merged mining P2Pool on the NUC.</description>
+    </item>
+    
+    <item>
+      <title>Full Node Setup: Raspberry Pi</title>
+      <link>/docs/setup-raspberry-pi/</link>
+      <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
+      
+      <guid>/docs/setup-raspberry-pi/</guid>
+      <description>Why a Vertcoin Full node?  Vertcoin is a digital currency supported by a peer-to-peer network. In order to run efficiently and effectively, it needs peers run by different people&amp;hellip; and the more the better. [1]
+This tutorial will describe how to create a Vertcoin “full node” (a Vertcoin server that contains the full blockchain and propagates transactions throughout the Vertcoin network via peers). This system will not mine for Vertcoins&amp;hellip; it will play its part to keep the Vertcoin peer-to-peer network healthy and strong.</description>
+    </item>
+    
+    <item>
+      <title>Full Node Setup: Raspberry Pi Zero W</title>
+      <link>/docs/setup-raspberry-pi-zero-w/</link>
+      <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
+      
+      <guid>/docs/setup-raspberry-pi-zero-w/</guid>
+      <description>Why a Vertcoin Full node?  Vertcoin is a digital currency supported by a peer-to-peer network. In order to run efficiently and effectively, it needs peers run by different people&amp;hellip; and the more the better. [1]
+This tutorial will describe how to create a Vertcoin “full node” (a Vertcoin server that contains the full blockchain and propagates transactions throughout the Vertcoin network via peers). This system will not mine for Vertcoins&amp;hellip; it will play its part to keep the Vertcoin peer-to-peer network healthy and strong.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Full Nodes</title>
+      <link>/docs/getting-started-full-nodes/</link>
+      <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
+      
+      <guid>/docs/getting-started-full-nodes/</guid>
+      <description>Vertcoin Node Scanner
+What is a Full Node? Vertcoin’s peer-to-peer network is composed of network &amp;ldquo;nodes,&amp;rdquo; run mostly by volunteers. Those running vertcoin nodes have a direct and authoritative view of the vertcoin blockchain, with a local copy of all the transactions, independently validated by their own system and can initiate transactions directly on the vertcoin network. By running a node, you don’t have to rely on any third party to validate a transaction.</description>
     </item>
     
   </channel>

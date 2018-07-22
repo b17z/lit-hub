@@ -3,7 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/docs/getting-started/</loc>
+    <loc>/docs/buying-vertcoin/</loc>
+    <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/setup-intel-nuc/</loc>
+    <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/setup-raspberry-pi/</loc>
+    <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/setup-raspberry-pi-zero-w/</loc>
+    <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/getting-started-full-nodes/</loc>
     <lastmod>2018-05-04T12:46:25-05:00</lastmod>
   </url>
   

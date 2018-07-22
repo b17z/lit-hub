@@ -1,6 +1,6 @@
 baseURL = "/"
 languageCode = "en-us"
-title = "Vertcoin Documentation"
+title = "Vertcoin Academy"
 theme = "lit-hub"
 description = "Vertcoin: The People's Coin"
 Paginate = 4
@@ -17,13 +17,13 @@ Paginate = 4
     url = "https://vertcoin.org"
 [[menu.main]]
     name = "Documentation"
-    weight = -100
+    weight = -200
     url = "/docs/"
 [[menu.main]]
 		name = "Vertcoin Academy"
-		weight = -100
+		weight = -300
 		url = ""
 [[menu.main]]
     name = "Faq"
-    weight = -100
+    weight = -400
     url = "/faq/"

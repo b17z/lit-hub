@@ -1,11 +1,11 @@
 body {
-  font-family: Lato, sans-serif; }
+  font-family: Montserrat, Lato, sans-serif; }
 
 h1.title, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: Lato, sans-serif; }
+  font-family: Montserrat, Lato, sans-serif; }
 
 button, .button {
-  font-family: Lato, sans-serif; }
+  font-family: Montserrat, Lato, sans-serif; }
 
 .media {
   padding: 24px;
@@ -190,6 +190,46 @@ button, .button {
       background: none;
       color: rgba(255, 51, 102, 0.7);
       border-color: rgba(255, 51, 102, 0.5); }
+
+
+/* Vertcoin Specific */
+
+.button.vertcoin-green {
+  color: #fff;
+  background-color: #00372E; }
+  .button.vertcoin-green:hover {
+    color: #fff;
+    background-color: rgba(2, 56, 47, 0.404); }
+  .button.vertcoin-green:disabled, .button.vertcoin-green.disabled {
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(2, 56, 47, 0.404); }
+  .button.vertcoin-green.outline {
+    background: none;
+    color: #00372E;
+    border-color: #00372E; }
+    .button.vertcoin-green.outline:hover {
+      color: rgba(2, 56, 47, 0.404);
+      border-color: rgba(2, 56, 47, 0.404); }
+    .button.vertcoin-green.outline:disabled, .button.vertcoin-green.outline.disabled {
+      background: none;
+      color: rgba(2, 56, 47, 0.404);
+      border-color: rgbargba(2, 56, 47, 0.404); }
+
+.button.vertcoin-green-outline {
+  background: none;
+  border-width: 2px;
+  border-color: #026F4B;
+  color: #026F4B; }
+  .button.vertcoin-green-outline:hover {
+    background: none;
+    color: #026F4B;
+    border-color: #026F4B; }
+  .button.vertcoin-green-outline:disabled, .button.vertcoin-green-outline.disabled {
+    background: none;
+    color: #026F4B;
+    border-color: #026F4B; }
+
+/* End Vertcoin Specific */
 
 .label.custom {
   background: #ea48a7;
@@ -389,7 +429,7 @@ button, .button {
   background: #ff3366; }
 
 .swatch-bg-button-primary {
-  background: #007eff; }
+  background: #026F4B; }
 
 .swatch-bg-button-secondary {
   background: #313439; }

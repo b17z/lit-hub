@@ -1,5 +1,5 @@
 +++
 description = "Vertcoin"
-title = "Vertcoin Documentation"
+title = "Vertcoin"
 draft = false
 +++
