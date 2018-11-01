@@ -14,4 +14,4 @@ This is in no particular order. I will get to the ones that actually make sense 
 
 
 ## Later on To Do List
-- [] Set up Vertcoin Academy to take on other kinds of content
+- [ ] Set up Vertcoin Academy to take on other kinds of content
