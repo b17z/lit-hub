@@ -1,10 +1,10 @@
 +++
 title = "Getting Started with Full Nodes"
-description = "An Introduction to Full Nodes"
+description = "What is a Node and Why?"
 date = 2018-05-04T12:46:25-05:00
 weight = 10
 draft = false
-bref = "An Introduction to Full Nodes"
+bref = "Participating in the Network"
 toc = true
 +++
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docs on Vertcoin Academy</title>
+    <title>Docs on </title>
     <link>/docs/</link>
-    <description>Recent content in Docs on Vertcoin Academy</description>
+    <description>Recent content in Docs on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 04 May 2018 12:46:25 -0500</lastBuildDate>
@@ -24,42 +24,112 @@ You will be prompted to enter details such as: your name, your email, your locat
     
     <item>
       <title>Full Node Setup: Intel NUC</title>
-      <link>/docs/setup-intel-nuc/</link>
+      <link>/docs/setup-nuc/</link>
       <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
       
-      <guid>/docs/setup-intel-nuc/</guid>
-      <description>Why a Vertcoin Full node?  Vertcoin is a digital currency supported by a peer-to-peer network. In order to run efficiently and effectively, it needs peers run by different people&amp;hellip; and the more the better. [1]
-This tutorial will describe how to create a Vertcoin “full node” (a Vertcoin server that contains the full blockchain and propagates transactions throughout the Vertcoin network via peers). This system will not mine for Vertcoins, however it is possible to setup a stable merged mining P2Pool on the NUC.</description>
+      <guid>/docs/setup-nuc/</guid>
+      <description>Intel NUC Vertcoin full node installation done using Windows Why a Vertcoin Full node?  Vertcoin is a digital currency supported by a peer-to-peer network. In order to run efficiently and effectively, it needs peers run by different people&amp;hellip; and the more the better. [1]
+This tutorial will describe how to create a Vertcoin “full node” (a Vertcoin server that contains the full blockchain and propagates transactions throughout the Vertcoin network via peers).</description>
     </item>
     
     <item>
-      <title>Full Node Setup: Raspberry Pi</title>
-      <link>/docs/setup-raspberry-pi/</link>
+      <title>Full Node Setup: Rasperry Pi 3 B/B&#43;</title>
+      <link>/docs/raspberry-pi/</link>
       <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
       
-      <guid>/docs/setup-raspberry-pi/</guid>
-      <description>Why a Vertcoin Full node?  Vertcoin is a digital currency supported by a peer-to-peer network. In order to run efficiently and effectively, it needs peers run by different people&amp;hellip; and the more the better. [1]
-This tutorial will describe how to create a Vertcoin “full node” (a Vertcoin server that contains the full blockchain and propagates transactions throughout the Vertcoin network via peers). This system will not mine for Vertcoins&amp;hellip; it will play its part to keep the Vertcoin peer-to-peer network healthy and strong.</description>
+      <guid>/docs/raspberry-pi/</guid>
+      <description>Raspberry Pi 3 B/B+ Vertcoin full node installation done using Windows Why a Vertcoin Full node?  Vertcoin is a digital currency supported by a peer-to-peer network. In order to run efficiently and effectively, it needs peers run by different people&amp;hellip; and the more the better. [1]
+This tutorial will describe how to create a Vertcoin “full node” (a Vertcoin server that contains the full blockchain and propagates transactions throughout the Vertcoin network via peers).</description>
     </item>
     
     <item>
-      <title>Full Node Setup: Raspberry Pi Zero W</title>
-      <link>/docs/setup-raspberry-pi-zero-w/</link>
+      <title>Full Node Setup: Rasperry Pi Zero W</title>
+      <link>/docs/raspberry-pi-zero-w/</link>
       <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
       
-      <guid>/docs/setup-raspberry-pi-zero-w/</guid>
-      <description>Why a Vertcoin Full node?  Vertcoin is a digital currency supported by a peer-to-peer network. In order to run efficiently and effectively, it needs peers run by different people&amp;hellip; and the more the better. [1]
-This tutorial will describe how to create a Vertcoin “full node” (a Vertcoin server that contains the full blockchain and propagates transactions throughout the Vertcoin network via peers). This system will not mine for Vertcoins&amp;hellip; it will play its part to keep the Vertcoin peer-to-peer network healthy and strong.</description>
+      <guid>/docs/raspberry-pi-zero-w/</guid>
+      <description>Raspberry Pi Zero W (Wireless) Vertcoin full node installation done using Windows Why a Vertcoin Full node?  Vertcoin is a digital currency supported by a peer-to-peer network. In order to run efficiently and effectively, it needs peers run by different people&amp;hellip; and the more the better. [1]
+This tutorial will describe how to create a Vertcoin “full node” (a Vertcoin server that contains the full blockchain and propagates transactions throughout the Vertcoin network via peers).</description>
     </item>
     
     <item>
       <title>Getting Started with Full Nodes</title>
-      <link>/docs/getting-started-full-nodes/</link>
+      <link>/docs/getting-started-with-full-nodes/</link>
       <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
       
-      <guid>/docs/getting-started-full-nodes/</guid>
+      <guid>/docs/getting-started-with-full-nodes/</guid>
       <description>Vertcoin Node Scanner
 What is a Full Node? Vertcoin’s peer-to-peer network is composed of network &amp;ldquo;nodes,&amp;rdquo; run mostly by volunteers. Those running vertcoin nodes have a direct and authoritative view of the vertcoin blockchain, with a local copy of all the transactions, independently validated by their own system and can initiate transactions directly on the vertcoin network. By running a node, you don’t have to rely on any third party to validate a transaction.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Mining</title>
+      <link>/docs/getting-started-with-mining/</link>
+      <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
+      
+      <guid>/docs/getting-started-with-mining/</guid>
+      <description>What is Mining? The Vertcoin system of trust is based on global computation. Transactions are bundled into blocks, which require an enormous amount of computation to prove, but only a small amount of computation to verify as proven. The mining process serves two purposes in Vertcoin: [1]
+ Mining nodes validate all transactions by reference to Vertcoin’s consensus rules. Mining provides security for vertcoin transactions by rejecting invalid or malformed transactions.</description>
+    </item>
+    
+    <item>
+      <title>Hardware Wallets</title>
+      <link>/docs/hardware-wallets/</link>
+      <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
+      
+      <guid>/docs/hardware-wallets/</guid>
+      <description>Hardware Wallets Hardware wallets are devices that operate a secure self-contained bitcoin wallet on special-purpose hardware. They are operated via USB with a desktop web browser or via near-field-communication (NFC) on a mobile device. By handling all bitcoin-related operations on the specialized hardware, these wallets are considered very secure and suitable for storing large amounts of bitcoin.[1]
+Ledger Currently the only Hardware Wallet that supports Vertcoin is Ledger. Ledger has included detailed instructions to accompany their hardware wallet found here, the wallet interface is managed via the ledger client, Ledger requires you write down a 24 word seed phrase and safeguard in the event that you lose or damage the device.</description>
+    </item>
+    
+    <item>
+      <title>Mining with Nvidia Cards</title>
+      <link>/docs/nvidia-mining-vertcoin/</link>
+      <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
+      
+      <guid>/docs/nvidia-mining-vertcoin/</guid>
+      <description>Vertcoin Nvidia Mining Guide Introduction Mining is the act of verifying transactions into blocks to add to the Vertcoin blockchain. This process is extremely resource intensive on a computer, and so the community works together in a peer-to-peer mining pool to validate these transactions. Additionally, the computers that do this hashing work for the network are eligible to claim brand new vertcoins as a reward when a new block is found on the network.</description>
+    </item>
+    
+    <item>
+      <title>Paper Wallets</title>
+      <link>/docs/paper-wallets/</link>
+      <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
+      
+      <guid>/docs/paper-wallets/</guid>
+      <description>Vertcoin Paper Wallets A paper wallet is an offline wallet that can be created to store vertcoin. Once created, you can send coins to the public address associated with your wallet for offline storage. Paper wallets are perfect for gifting small amounts to friends and family.
+Getting Started    Generator Description     vertaddress.org Wallet generator created by the Vertcoin team. Supports bulk wallet creation and passphrase protected wallets   walletgenerator.</description>
+    </item>
+    
+    <item>
+      <title>Vertcoin Core Wallet</title>
+      <link>/docs/core-wallet/</link>
+      <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
+      
+      <guid>/docs/core-wallet/</guid>
+      <description>Vertcoin Core Wallet Installation Github Download To install the Vertcoin Core wallet, navigate to the Vertcoin Core repository Releases Page on GitHub and download the binary file for the latest release. Windows, Linux and OSX versions are availiable.
+Inside the zipped download you will find four applications; vertcoin-qt, vertcoind, vertcoin-cli and vertcoin-tx.
+   Application Description     vertcoin-qt Core wallet with a GUI interface.   vertcoind Headless daemon core wallet.</description>
+    </item>
+    
+    <item>
+      <title>What is A Wallet?</title>
+      <link>/docs/wallet-overview/</link>
+      <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
+      
+      <guid>/docs/wallet-overview/</guid>
+      <description>Wallet Overview A Wallet is an address or a collections of addresses and corresponding private keys that allow you to recieve, store, and send Vertcoin. There are many types of wallets, each with different purposes and limitations.
+   Wallet Description     Core Wallet A reference implementation of the vertcoin protocol that includes a wallet. Downloads the entire blockchain, recommended for miners. Known as a full client, or full node.</description>
+    </item>
+    
+    <item>
+      <title>What is P2Pool?</title>
+      <link>/docs/p2pool-overview/</link>
+      <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
+      
+      <guid>/docs/p2pool-overview/</guid>
+      <description>What is P2Pool? P2Pool is a decentralized Bitcoin mining pool that works by creating a peer-to-peer network of miner nodes.
+P2Pool creates a new block chain in which the difficulty is adjusted so a new block is found every 30 seconds. The blocks that get into the P2Pool block chain (called the &amp;ldquo;share chain&amp;rdquo;) are the same blocks that would get into the Bitcoin block chain, only they have a lower difficulty target.</description>
     </item>
     
   </channel>

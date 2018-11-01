@@ -1,12 +1,15 @@
 +++
-title = "Full Node Setup: Raspberry Pi"
-description = "Up and Running on the Raspberry Pi"
+title = "Full Node Setup: Rasperry Pi 3 B/B+"
+description = "Up and Running on the Raspberry Pi 3"
 date = 2018-05-04T12:46:25-05:00
 weight = 10
 draft = false
-bref = "Full Guide in Setting Up a Full Node on the Raspberry Pi"
+bref = "Guide in Setting Up a Full Node on the Raspberry Pi 3"
 toc = true
 +++
+
+
+### Raspberry Pi 3 B/B+ Vertcoin full node installation done using Windows
 
 <p align="center">
   <img src="https://i.imgur.com/eJyg30C.png" width="343" height="68" />
@@ -15,14 +18,14 @@ toc = true
   <img src="https://i.imgur.com/zgx4uiu.jpg">
 </p>
 
-#### Why a Vertcoin Full node?
+### Why a Vertcoin Full node?
 >Vertcoin is a digital currency supported by a peer-to-peer network. In order to run efficiently and effectively, it needs peers run by different people... and the more the better. [1]
 
 >This tutorial will describe how to create a Vertcoin “full node” (a Vertcoin server that contains the full blockchain and propagates transactions throughout the Vertcoin network via peers). This system will not mine for Vertcoins... it will play its part to keep the Vertcoin peer-to-peer network healthy and strong. For a detailed explanation for why it is important to have a healthy Vertcoin peer-to-peer network, read this [article](https://medium.com/@lopp/bitcoin-nodes-how-many-is-enough-9b8e8f6fd2cf) about Bitcoin full nodes. [2]
 
 `NOTE:` This will be a “headless” server... meaning we will not be using a GUI to configure Vertcoin or check to see how things are running. In fact, once the server is set up, you will only interact with it using command line calls over `SSH`. The idea is to have this full node be simple, low-power, with optimized memory usage and something that “just runs” in your basement, closet, etc.
 
-#### Why a Raspberry Pi?
+### Why a Raspberry Pi?
 >Raspberry Pi is an inexpensive computing hardware platform that generates little heat, draws little power, and can run silently 24 hours a day without having to think about it. [1]
 
 #### Index
@@ -803,6 +806,8 @@ Collecting Automat>=0.3.0 (from Twisted>=12.2.0->-r requirements.txt (line 1))
 #### Setup P2Pool bash script for execution on reboot  
 `pi@raspberrypi:~ $ nano start-p2pool.sh`  
 ```
+
+```
 #!/bin/bash
 #
 # run p2pool with pre-configured settings
@@ -884,7 +889,6 @@ Network 2:
 
 `NOTE:` This has proven to be an unstable experience, this section is experimental and is only for those who wish to experimental with their Raspberry Pi and are comfortable with troubleshooting their node and possibly breaking their node. 
 
-##
 
 A `Unitus` full node may be setup to allow for merged mining rewards when mining with `p2pool-vtc`. Running two full nodes together on the same Raspberry Pi will mean that you will be storing two blockchains on your USB Flash Drive rather than one, and you will be using more resources on load and at idle. 
 

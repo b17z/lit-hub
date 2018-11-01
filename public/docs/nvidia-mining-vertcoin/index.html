@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta name="generator" content="Hugo 0.50" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Mining with Nvidia Cards </title>
+
+  
+  <meta name="description" content="Make use of those unused cards"> 
+  
+  
+  
+  
+  
+
+  
+
+  <meta name="author" content="Vertcoin Documentation">
+
+
+  <meta property="og:title" content="Mining with Nvidia Cards" />
+<meta property="og:description" content="Make use of those unused cards" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/docs/nvidia-mining-vertcoin/" /><meta property="article:published_time" content="2018-05-04T12:46:25-05:00"/>
+<meta property="article:modified_time" content="2018-05-04T12:46:25-05:00"/>
+
+  
+
+
+
+
+  
+  
+  
+  
+  
+
+  <link rel="canonical" href="/docs/nvidia-mining-vertcoin/">  
+
+  <link rel="shortcut icon" type="image/png" href="">
+
+
+  <link href="/css/font.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.min.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.legenda.css" rel="stylesheet" type="text/css">
+  <link href="/css/highlight.css" rel="stylesheet" type="text/css">
+  <link href="/css/master.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.demo.css" rel="stylesheet" type="text/css">
+
+ <link href="/css/custom.css" rel="stylesheet" type="text/css">
+
+  <script src="/js/jquery-2.1.4.min.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript" src="/js/tocbot.min.js"></script>
+</head>
+
+
+<body class="page-kube">
+  <header> <div class="show-sm">
+    <div id="nav-toggle-box">
+      <div id="nav-toggle-brand">
+        <a href="/"></a>
+      </div><a data-component="toggleme" data-target="#top" href="#" id="nav-toggle"><i class="kube-menu"></i></a>
+    </div>
+  </div>
+  <div class="hide-sm" id="top">
+    <div id="top-brand">
+      <a href="/" title="home"></a>
+    </div>
+    <nav id="top-nav-main">
+      <ul>
+       
+       
+    <li><a href="/" >Home</a></li>
+    
+    <li><a href="https://vertcoin.org" >Main Site</a></li>
+    
+    <li><a href="/docs/" >Documentation</a></li>
+    
+    <li><a href="/academy/" >Vertcoin Academy</a></li>
+    
+      </ul>
+    </nav>
+    <nav id="top-nav-extra"> 
+      <ul>
+          
+      </ul>
+    </nav>
+  </div>
+ </header>
+  <main>
+  <div id="main">
+    <div id="hero">
+      <h1> Mining with Nvidia Cards </h1>
+      <p class="hero-lead">
+           Participating in the Network.
+      </p>
+
+    </div> 
+    <div id="kube-component" class="content">
+    
+<nav id="contents">
+    <ol class="js-toc">
+    </ol>
+</nav>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded",
+function(){
+tocbot.init({
+
+tocSelector: '.js-toc',
+
+contentSelector: '.content',
+
+headingSelector: 'h3'
+})
+}
+);
+</script>
+
+
+
+    
+
+<p align="center">
+  <img src="https://i.imgur.com/eJyg30C.png" width="343" height="68" />
+</p>
+
+<h3 id="vertcoin-nvidia-mining-guide">Vertcoin Nvidia Mining Guide</h3>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>Mining is the act of verifying transactions into blocks to add to the Vertcoin blockchain. This process is extremely resource intensive on a computer, and so the community works together in a peer-to-peer mining pool to validate these transactions. Additionally, the computers that do this hashing work for the network are eligible to claim brand new vertcoins as a reward when a new block is found on the network. Mining is the act that validates these transactions, and without miners, Vertcoins would not be able to traded.</p>
+
+<h3 id="hashrates">Hashrates</h3>
+
+<table>
+<thead>
+<tr>
+<th>GPU Model</th>
+<th>Hashrate (Mh/s)</th>
+<th>Power Consumption (W)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>GTX 1050ti</td>
+<td>~15 Mh/s</td>
+<td>70 watts</td>
+</tr>
+
+<tr>
+<td>GTX 1060 3gb</td>
+<td>~ 22 Mh/s</td>
+<td>100 - 120 watts</td>
+</tr>
+
+<tr>
+<td>GTX 1060 6gb</td>
+<td>~ 27 Mh/s</td>
+<td>100 - 120 watts</td>
+</tr>
+
+<tr>
+<td>GTX 1070</td>
+<td>~ 35 - 40 Mh/s</td>
+<td>150 watts</td>
+</tr>
+
+<tr>
+<td>GTX 1070ti</td>
+<td>~ 40 - 45 Mh/s</td>
+<td>180 - 250 watts</td>
+</tr>
+
+<tr>
+<td>GTX 1080</td>
+<td>~ 45 - 50 Mh/s</td>
+<td>250 watts</td>
+</tr>
+
+<tr>
+<td>GTX 1080ti</td>
+<td>~ 65 - 70 Mh/s</td>
+<td>250-300 watts</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="windows">Windows</h2>
+
+<h4 id="table-of-contents">Table of Contents</h4>
+
+<ol>
+<li>Introduction</li>
+<li>Basic Requirements for Mining VTC with Nvidia Cards</li>
+<li>Getting started (things you’ll need)</li>
+<li>Steps
+
+<ul>
+<li>Installing and setting programs up</li>
+<li>Getting Miner’s address (to receive mining payment)</li>
+<li>Setting up One Click Miner to mine with regular mining pools</li>
+<li>Setting up One Click Miner to mine with p2pools</li>
+<li>Optimizing</li>
+</ul></li>
+<li>Final Checklist</li>
+<li>Troubleshooting/FAQ</li>
+</ol>
+
+<h3 id="introduction-1">Introduction</h3>
+
+<p>Hello there! Welcome to the VertDocs <strong>Nvidia Mining Guide</strong>. In cryptocurrency, mining means to provide computation power to solve certain mathematical equations which in return helps keep the entire network (also known as the blockchain) secure. Miners are incentivized by the block rewards provided when a block is found for the network.</p>
+
+<p>Let&rsquo;s get started!</p>
+
+<h3 id="basic-requirements-for-mining-vtc-with-nvidia-cards">Basic Requirements for mining VTC with Nvidia Cards:</h3>
+
+<ol>
+<li><strong>Decent Equipment</strong> - A computer with (<em>recommended</em>) Nvidia 10 series or (<em>minimum</em>) Nvidia 9 series GPU.</li>
+<li><strong>Understand your electricity tariff</strong> - Assuming an electricity tariff of $0.1/kWh, if you have <em>Decent Equipment</em> as stated above, you&rsquo;ll most likely mine with a decent profit. However, if your electricity tariff rate is low you may be able to mine profitably even with an older card.</li>
+<li><strong>Stable internet connection</strong> - Doesn&rsquo;t need to be blazing fast, just normal cable/fibre will do but it has to be stable for optimum results.</li>
+<li><strong>Patience</strong> - Setting up your mining tools etc. can be really quick, or it can be really troublesome for some people. As long as you have the heart to follow through, no reason you can&rsquo;t be mining with decent equipment! :)</li>
+<li><strong>More patience</strong> - Ideally, set things up and let it run for 24 hours or more before you decide if its worth it at all. This is especially true if you are mining on p2pools (LINK TO GUIDE). Regular pools will pay you almost every hour, but that does not mean that it is better. You can try around to see what works best for you.</li>
+<li><strong>Finish this guide!</strong> - No really. Try and finish this guide. I promise it&rsquo;ll be worth it!</li>
+</ol>
+
+<p>That said, lets get going!</p>
+
+<p>Vertcoin (VTC) is based on the Lyra2REv2 algorithm which is mineable by most modern Nvidia GPUS (10 series) profitably. However, this does not mean that older generation cards aren&rsquo;t able to mine at all - they can, but not as profitable as 10 series cards. As long as your card isn&rsquo;t overly dated (older than 9 series) you should still be able to make a smaller profit or breakeven. As a benchmark to get you started, you can estimate your card&rsquo;s profitability using <a href="coinwarz.com/calculators/vertcoin-mining-calculator/">CoinWarz&rsquo;s online calculator</a>.</p>
+
+<p>Assuming you have a Standard Desktop with 1 GPU, calculate your power as 100W (for all other components in PC) + GPU draw) and leave the other fields as default. As a guide a table below shows the rough hashrate of several Nvidia 10 series GPUs:</p>
+
+<table>
+<thead>
+<tr>
+<th>GPU Model</th>
+<th>Hashrate (Mh/s)</th>
+<th>Power Consumption (W)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>GTX 1050ti</td>
+<td>~15 Mh/s</td>
+<td>70 watts</td>
+</tr>
+
+<tr>
+<td>GTX 1060 3gb</td>
+<td>~ 22 Mh/s</td>
+<td>100 - 120 watts</td>
+</tr>
+
+<tr>
+<td>GTX 1060 6gb</td>
+<td>~ 27 Mh/s</td>
+<td>100 - 120 watts</td>
+</tr>
+
+<tr>
+<td>GTX 1070</td>
+<td>~ 35 - 40 Mh/s</td>
+<td>150 watts</td>
+</tr>
+
+<tr>
+<td>GTX 1070ti</td>
+<td>~ 40 - 45 Mh/s</td>
+<td>180 - 250 watts</td>
+</tr>
+
+<tr>
+<td>GTX 1080</td>
+<td>~ 45 - 50 Mh/s</td>
+<td>250 watts</td>
+</tr>
+
+<tr>
+<td>GTX 1080ti</td>
+<td>~ 65 - 70 Mh/s</td>
+<td>250-300 watts</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p>Note that the values above are only estimates, and can be a lot better with proper <a href="#Optimization">optimization</a>. For example, an optimized GTX 1070 (limit to 65% power, core overclock +130) can achieve 34 Mh/s while only drawing ~100 watts. As miner software and better graphic drivers gets released overtime, it is likely that you will see more (slight) increases in your card&rsquo;s mining efficiency.</p>
+
+<h3 id="getting-started">Getting Started</h3>
+
+<p>Vertcoin mining is simple and easy to get into. To get started with Nvidia mining, you will require the following:
+* (a) <a href="https://github.com/vertcoin/vertcoin/releases">Vertcoin Core Wallet</a> (Note: Do NOT mine to electrum wallet – <a href="https://www.reddit.com/r/vertcoin/comments/7ix2jn/do_not_mine_to_a_ledger_or_electrum_wallet_use/">here’s why</a>)
+* (b) <a href="https://github.com/vertcoin/One-Click-Miner/releases">Vertcoin’s One Click Miner</a>
+* &copy; Address of the mining pool you wish to mine on (eg. stratum+tcp://vertpoolname:1234)
+* (d) To monitor/optimize – MSI Afterburner</p>
+
+<h2 id="steps">Steps:</h2>
+
+<h3 id="installing-and-setting-programs-up">Installing and setting programs up</h3>
+
+<ol>
+<li>Download and unzip <code>(a) Core Wallet</code>. Vertcoin-qt.exe will be the one you use most of the time as it is the one with the Graphical User Interface. During first start up you will be prompted to select your Blockchain Data location – put it on a storage with plenty of space.</li>
+</ol>
+
+<p><img src="/images/core-first-start.png" alt="VTC Core Wallet First Start" /></p>
+
+<ol>
+<li>Open up <code>(a) Core Wallet</code> and let it sync – the rate at which the sync occurs should increase as you get more connections to other Core Wallet users (it is p2p, which means other users share their data for you to download). You can increase the speed at which it syncs by downloading the <a href="https://www.reddit.com/r/vertcoin/comments/77eojk/sync_your_wallet_faster_with_the_bootstrapdat/">Bootstrap file</a>.</li>
+</ol>
+
+<p><img src="/images/core-sync.png" alt="VTC Core Wallet Sync" /></p>
+
+<ol>
+<li>Install <code>(b) Vertcoin One Click Miner</code> (OCM). When you run it for the first time it will prompt you to select your Vertcoin Blockchain Data (in this example it is D:\VTC Blockchain Data as indicated in the picture above)</li>
+</ol>
+
+<h3 id="getting-your-miner-s-address-you-will-receive-payment-with-this">Getting your Miner’s Address (You will receive payment with this)</h3>
+
+<ol>
+<li>While the Core Wallet syncs, Click <code>Hide</code> to hide the sync progress window and reveal the User Interface.</li>
+</ol>
+
+<p><img src="/images/core-ui.png" alt="VTC Core Wallet UI" /></p>
+
+<ol>
+<li>Navigate to <code>Receive</code> and enter <code>Label</code> as appropriate (eg. Mining from Pool XYZ) &gt; Click <code>Request Payment</code> and an address will be generated for you. Double click on your generated address to reveal more information.</li>
+</ol>
+
+<p><img src="/images/core-generate-address.png" alt="VTC Core Wallet Address Generating" /></p>
+
+<ol>
+<li>You may now minimize the Vertcoin Core Wallet to let it continue syncing – the generated receiving address will be used later.</li>
+</ol>
+
+<h3 id="setting-up-one-click-miner-to-mine-on-regular-mining-pools-for-p2pools-please-move-to-the-next-section">Setting up One Click Miner to mine on regular mining Pools (For P2Pools please move to the next section.)</h3>
+
+<ol>
+<li>Open up the OCM (Vertcoin One Click Miner.exe) you have just installed.</li>
+<li>Navigate to <code>Add Pool</code> and enter the following (refer to image below):
+
+<ul>
+<li>Your Miner Address generated in Step (5) into Miners Address Field. Beware of any ninja “space” behind the address when pasting!</li>
+<li>Your &copy; Pool Address into the Pool Address Field.</li>
+<li>Leave password as x. It does not affect your mining.</li>
+<li>(Optional) Add description as necessary to help remember pool details</li>
+</ul></li>
+</ol>
+
+<p><img src="/images/ocm-pool-setup.png" alt="VTC OCM Pool Setup" /></p>
+
+<ol>
+<li><p>On the left side of the interface, select Nvidia (ccminer OR Vertminer) and click</p></li>
+
+<li><p>Click <code>Start</code>. OCM will prompt you to install whichever miner you have selected.</p></li>
+</ol>
+
+<p>(Note: Vertminer is a repackaged ccminer which includes 2% donation (you donate 2% of your hash time), but users typically report 2 to 8% increase in hashrate as it is optimized for VTC’s algorithm, so it may be well worth it. Feel free to experiment between both miners.)</p>
+
+<p><img src="/images/ocm-miner-setup.png" alt="VTC OCM Miner Setup" /></p>
+
+<ol>
+<li>Click <code>settings</code> on top, tick <code>Show CLI</code> – this will help you determine if you are mining correctly by showing the command line window. Once you have gotten the hang of it and you know your miner runs fine, you may untick it as it will not affect your mining in any way.</li>
+<li>If you would like to add more pool to the list, feel free to do so. Those pools will act as failovers – the miner switches over to those if the pool you are currently mining on goes down. OCM will pick the first pool in the list to begin mining. Move to the next step if you do not want to add more pools.</li>
+<li>Once you have completed all the steps above, you may click <code>Start</code> to begin mining. You should see something similar to below:</li>
+</ol>
+
+<p><img src="/images/ocm-mining.png" alt="VTC OCM Mining" /></p>
+
+<pre><code>If you see something similar to the above, congratulations! You are now mining!
+</code></pre>
+
+<ol>
+<li>Continue to mine until you get your first payment. Once you get it, you can be sure that you are mining Vertcoin!</li>
+</ol>
+
+<h3 id="setting-up-one-click-miner-to-mine-on-p2pools">Setting up One Click Miner to mine on P2Pools</h3>
+
+<p>If you are wondering where there is a need to mine on p2pool, read (Link to p2pool document). In essence P2Pool helps with decentralization and distribution of hashrate. For some, p2pool mining is also slightly more profitable since they can mine locally which eliminates issues arising due to latency and/or dependencies on other mining pools&rsquo; uptime.</p>
+
+<ol>
+<li><p>Open up OCM, go to settings. For p2pool hosting there are a few settings that you should take note of:</p>
+
+<ul>
+<li><em>Network</em> - Select the appropriate network based on your mining hashrate. Network 1 is made for miners with &gt;100 Mh/s while Network 2 is made for miners with &lt;100 Mh/s. <em>Alternatively</em>, you can check out the <a href="https://p2proxy.vertcoin.org/">P2Proxy Pool</a>.</li>
+<li><em>Fee</em> - This represents the fee you collect from miners who mine on your p2pool.</li>
+<li><em>Fee</em> <em>Address</em> - Fees you collect will be in this address.</li>
+<li><em>Donation</em> - % of Mining proceeds on your p2pool will go to the VTC developers</li>
+</ul>
+
+<p><img src="/images/ocm-p2p-settings.png" alt="VTC OCM P2P Settings" /></p></li>
+
+<li><p>In OCM, tick <code>Run Local Node</code>. A CLI should open up as below:</p>
+
+<p><img src="/images/ocm-p2p-start.png" alt="Vertcoin OCM p2pool start" /></p>
+
+<p>It should then load up to something similar to below:</p>
+
+<p><img src="/images/ocm-p2p-running.png" alt="Vertcoin OCM P2pool running" /></p></li>
+
+<li><p>Once you get the above up and running, click on <code>Add Pool</code> and add the following in Pool Address field:</p>
+
+<ul>
+<li>Network 1: stratum+tcp://localhost:9171</li>
+<li>Network 2: stratum+tcp://localhost:9181</li>
+</ul>
+
+<p>Worker address is taken from the one you generated in Step (5). Password can be x.</p></li>
+
+<li><p>After this is done, select the pool you just added and start mining away! You can verify that you are mining by checking the following:</p>
+
+<ol>
+<li><p>In OCM, the <u>Miner Hashrate</u> isn&rsquo;t 0 kh/s</p></li>
+
+<li><p>After a few minutes, open up your browser, go to (Network 1) <a href="http://localhost:9171/static/">http://localhost:9171/static/</a> or (Network 2) <a href="http://localhost:9181/static/">http://localhost:9181/static/</a>. Your miner should be on the list and has a non-zero share difficulty associated with it.</p></li>
+
+<li><p>Similarly, if you mine on other people&rsquo;s pool, you should see something similar to below when you are mining correctly.</p></li>
+</ol>
+
+<p><img src="/images/p2p-web-interface.png" alt="VTC P2Pool Web Interface" /></p>
+
+<p>​                    <strong>If yours look similar to the above, you are good to go!</strong></p></li>
+</ol>
+
+<p>Note: Mining on P2Pool involves a bit of luck and you may need to wait up to 24h before getting your first payout.</p>
+
+<h3 id="optimizing">Optimizing:</h3>
+
+<p>If you are able to run everything, you may try to optimize your mining rate by limiting certain parameters on your card – do this on your own risk! The optimizing mentioned here are just suggestions – please feel free to tweak as necessary.</p>
+
+<ol>
+<li><p><em>MSI Afterburner</em></p>
+
+<ul>
+<li>Option 1: 65% Power, +100 Core Clock, -400 Memory Clock</li>
+<li>Option 2: 90% Power, +100 Core Clock, -400 Memory Clock</li>
+<li>Change your fan settings! Generally it is recommended to keep your card temperature below 70°C so adjust the fan curve as necessary.</li>
+</ul></li>
+
+<li><p><em>Intensity Settings in OCM</em></p></li>
+</ol>
+
+<p>It is generally recommended to leave intensity as default “0” (max) so that the software can automatically optimize the miner to provide the best results. However, your mileage may vary and it is still recommended that you try it out to see the results for yourself.</p>
+
+<ol>
+<li><em>Hardware: Casing airflow</em></li>
+</ol>
+
+<p>If you haven’t done so, it may be a good time now to investigate your casing’s airflow (check your fans, clean out the dust filter, make sure there is some form of air circulation etc.). A cool GPU is a happy GPU, and a happy GPU gives the best results :) Once again, it is recommended to keep temperatures below 70°C.</p>
+
+<h3 id="quick-tl-dr-checklist">Quick TL;DR Checklist:</h3>
+
+<ul>
+<li>Installed (a) Vertcoin Core Wallet and (b) One Click Miner.</li>
+<li>Added both items to Exclusion list of Anti-virus and Firewall</li>
+<li>Generated a Receiving address with Core Wallet</li>
+<li>Installed Nvidia Miner on One Click Miner</li>
+<li>Miner hashrate on OCM is not 0 when start is clicked</li>
+<li>If mining on P2Pool, miner is on list and hashrate is shown along with non-zero share difficulty.</li>
+</ul>
+
+<h3 id="troubleshooting">Troubleshooting:</h3>
+
+<ol>
+<li>If you haven&rsquo;t yet, try restarting your PC after installing everything!</li>
+<li>Stratum Connection failed!
+
+<ul>
+<li>Check your Firewall/Antivirus settings. Miner programs occasionally get blocked or flagged as malicious.</li>
+<li>Try a different pool instead, the pool could be down at the moment.</li>
+</ul></li>
+<li>No Hashrate shown in OCM despite successful connection in CLI
+
+<ul>
+<li>Check your Graphic Drivers and ensure they are up to date</li>
+</ul></li>
+<li>Why don’t I see my payouts in the Core Wallet even after the pool says that it has paid?
+
+<ul>
+<li>Your core wallet may not be fully synced (not up to date with the latest blockchain data). Give it some more time and it should show up as soon as it syncs up to the point where you are paid.</li>
+</ul></li>
+<li>On the P2Pool web interface (<a href="http://localhost:91x1/static/">http://localhost:91x1/static/</a>) why does my miner have 0 share difficulty?
+
+<ul>
+<li>You may have accidentally included a &ldquo;ninja&rdquo; space behind your Miner Address when pasting it during the Add Pool step!</li>
+</ul></li>
+<li>I have been mining on the p2pool for 24 hours, and still did not get any payouts at all!
+
+<ul>
+<li>This is where you need to give your miner some more time - mining on p2pool involves some luck and when you are lucky, you find more shares than usual (more payouts, yay!) and when you get unlucky, you don&rsquo;t find shares for a period of time (boo! :( I know) but if you have mined for long enough, it should even out based on your estimations.</li>
+<li>Alternatively, try mining on <a href="https://p2proxy.vertcoin.org/">P2Proxy Pool</a> if you are really struggling to find shares.</li>
+</ul></li>
+</ol>
+
+<p>That is all for the Vertcoin Nvidia mining guide! I hope you&rsquo;ve enjoy this guide as much as I have enjoyed writing it. Thank you, and good luck mining!</p>
+
+<hr />
+
+<h2 id="linux-ubuntu-recommended">Linux (Ubuntu recommended)</h2>
+
+<h4 id="table-of-contents-1">Table of Contents</h4>
+
+<ol>
+<li>Introduction</li>
+<li>Download and Install Ubuntu Server 16.04</li>
+<li>Initial Setup of Ubuntu Server 16.04</li>
+<li>Download and install Vertcoin Core</li>
+<li>Transfer Blockchain to Ubuntu Server</li>
+<li>Download and configure <code>p2pool-vtc</code></li>
+<li>Configure firewall for Vertcoin Core &amp; P2Pool traffic</li>
+<li>Download, configure, and compile latest <code>ccminer</code></li>
+<li>Create miner script, <code>p2pool-vtc</code> script, Configure boot settings</li>
+<li>Start mining!<br />
+<code>*OPTIONAL</code> Setup Unitus full node for merged mining<br />
+<strong>Recommend at minimum 3GB of RAM for merged mining</strong></li>
+</ol>
+
+<h3 id="1-introduction">1.) Introduction</h3>
+
+<p>This section of the <strong>Vertcoin Nvidia Mining Guide</strong> will walk through the steps of setting up P2Pool on your mining rig using a headless <strong>Ubuntu Server 16.04 LTS</strong> Linux distribution. Ubuntu Server 16.04 was chosen because of it&rsquo;s ease of use and setup for mining Vertcoin. You may use whatever distribution suits you but please note the commands for this walk through may not apply to your distribution.</p>
+
+<p>Before you get started consider downloading and installing the latest stable release of <a href="https://github.com/vertcoin-project/vertcoin-core/releases">Vertcoin Core</a> wallet onto a computer you use that is not part of a mining rig. This step is <code>OPTIONAL</code> but recommended. Doing so will speed up the process of syncing <code>vertcoind</code> later for a functioning P2Pool to mine on.</p>
+
+<p>This copy of the blockchain that is syncing to side-load onto our mining later</p>
+
+<p><code>Vertcoin Core Download Link: https://github.com/vertcoin-project/vertcoin-core/releases</code><br />
+<code>Default Windows Directory (Vertcoin): C:\Users\%USER%\AppData\Roaming\Vertcoin</code></p>
+
+<p><strong>Alternatively you may download the <code>bootstrap.dat</code> file provided by the Vertcoin developers; instructions included below.</strong></p>
+
+<h3 id="assumptions">Assumptions</h3>
+
+<p>This guide is assumes the user is installing Ubuntu Server 16.04 on a mining rig using Nvidida graphics card(s), connecting a keyboard and monitor only once during the initial Operating System installation and uses <code>SSH</code> to remotely connect to their miner on their Local Area Network after Ubuntu Server has been installed.</p>
+
+<p>This guide also assumes the user has access to a Windows computer. If you do not have access / do not use Windows, not all steps listed below may apply to you.</p>
+
+<h3 id="parts-list">Parts List</h3>
+
+<ul>
+<li>USB Flash Drive 1GB+</li>
+<li>Nvidia Mining Rig</li>
+<li>Internet Connection (Ethernet recommended)</li>
+</ul>
+
+<hr />
+
+<h3 id="2-download-and-install-ubuntu-server-16-04">2.) Download and Install Ubuntu Server 16.04</h3>
+
+<blockquote>
+<p>Ubuntu is a free and open source operating system and Linux distribution based on Debian. Ubuntu has a server edition that uses the same APT repositories as the Ubuntu Desktop Edition. The differences between them are the absence of an X Window environment in a default installation of the server edition.</p>
+</blockquote>
+
+<h4 id="download-ubuntu-16-04-server">Download Ubuntu 16.04 Server</h4>
+
+<p><code>http://releases.ubuntu.com/16.04/</code></p>
+
+<h4 id="download-rufus-portable-recommended">Download Rufus (Portable recommended)</h4>
+
+<p><code>https://rufus.akeo.ie/</code></p>
+
+<h4 id="install-ubuntu-server-image-to-usb-flash-drive">Install Ubuntu Server image to USB Flash Drive</h4>
+
+<p>Plug in the USB Flash Drive you wish to your PC, then open Rufus (Portable).<br />
+Proceed by installing the Ubuntu Sever 16.04 <code>.iso</code> image to the USB Flash Drive.</p>
+
+<p><img src="https://i.imgur.com/pLz7vxH.png" alt="Prompt" /><br />
+<img src="https://i.imgur.com/n0YniAa.png" alt="SelectImg" /><br />
+<img src="https://i.imgur.com/SqeJdrL.png" alt="ISOmode" /><br />
+<img src="https://i.imgur.com/rDAdjfp.png" alt="Progress" /></p>
+
+<h3 id="prepare-peripherals">Prepare peripherals</h3>
+
+<p>Once Ubuntu Server 16.04 has been successfully written to the USB Flash Drive, safely remove it ensuring not to corrupt the data on the device. Continue by connecting a single monitor, keyboard and the USB Flash Drive containing Ubuntu Server 16.04 to the Nvidia mining rig ensuring all devices are plugged in properly.</p>
+
+<h3 id="install-ubuntu-server-16-04-to-mining-rig">Install Ubuntu Server 16.04 to Mining Rig</h3>
+
+<p>Power on your Nvidia mining rig and access your <code>BIOS</code> screen, this is typically performed with the <code>DEL</code> or <code>ESC</code> key during the boot sequence. Ensure the USB Flash Drive that contains Ubuntu Server is set to the first position in the boot priority. Exit and save your <code>BIOS</code> changes if any needed to be made.</p>
+
+<p><img src="https://i.imgur.com/if05jsI.png" alt="Boot" />
+<img src="https://i.imgur.com/2XXwRFh.png" alt="Hostname" />
+<img src="https://i.imgur.com/HAjrTpp.png" alt="User" />
+<img src="https://i.imgur.com/CBEh1Us.png" alt="HomeDir" />
+<img src="https://i.imgur.com/QAaTmbz.png" alt="Partition" />
+<img src="https://i.imgur.com/EpoEH34.png" alt="Updates" /><br />
+Select <code>OpenSSH</code> server using the spacebar and continue. <code>OpenSSH</code> will allow us to control the mining rig over the LAN connection.</p>
+
+<p><img src="https://i.imgur.com/mesAFSa.png" alt="PkgSelect" />
+<img src="https://i.imgur.com/nVzzmXj.png" alt="GrubLoader" /></p>
+
+<hr />
+
+<h3 id="3-initial-setup-of-ubuntu-server-16-04">3.) Initial Setup of Ubuntu Server 16.04</h3>
+
+<p><img src="https://i.imgur.com/7eoyKWw.png" alt="FirstLogin" /><br />
+On first login issue the following command before disconnecting the attached peripherals to find your mining rig&rsquo;s <code>IP</code> address:</p>
+
+<pre><code>miner@vertminer:~$ ifconfig
+enp1s0    Link encap:Ethernet  HWaddr 00:00:00:00:00:00  
+          inet addr:192.168.1.11  Bcast:192.168.1.255  Mask:255.255.255.0
+          inet6 addr: fe80::22cf:30ff:fee6:86d3/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:151151 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:75867 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:159926011 (159.9 MB)  TX bytes:12029142 (12.0 MB)
+</code></pre>
+
+<p><code>NOTE</code> the <code>IP</code> address of your mining rig, you will login to the miner using this address.</p>
+
+<p>We will access the Nvidia mining rig through an <code>SSH</code> session on our Windows computer. I like to use <code>Git Bash</code> which is included in the Windows <a href="https://git-scm.com/downloads">download</a> of <code>Git</code>.</p>
+
+<p><code>Git download link: https://git-scm.com/downloads</code></p>
+
+<p># Open <code>Git Bash</code> and &hellip;<br />
+<code>~ $ ssh 192.168.1.11 -l miner</code></p>
+
+<p># Download and install latest system updates<br />
+<code>miner@vertminer:~$ sudo apt-get update ; sudo apt-get upgrade -y</code></p>
+
+<p># Add Graphics Drivers PPA; install graphics driver<br />
+<code>miner@vertminer:~$ sudo add-apt-repository ppa:graphics-drivers/ppa</code><br />
+<code>miner@vertminer:~$ sudo apt update</code><br />
+<code>miner@vertminer:~$ sudo apt-get install ubuntu-drivers-common</code></p>
+
+<p># Identify your device(s) and the available drivers<br />
+<code>miner@vertminer:~$ sudo ubuntu-drivers devices</code></p>
+
+<pre><code>== /sys/devices/pci0000:00/0000:00:1c.0/0000:05:00.0 ==
+model    : GM206 [GeForce GTX 960]
+modalias : pci:v000010DEd00001401sv000010DEsd0000116Fbc03sc00i00
+vendor   : NVIDIA Corporation
+driver   : nvidia-396 - third-party free recommended
+driver   : nvidia-390 - third-party free
+driver   : xserver-xorg-video-nouveau - distro free builtin
+driver   : nvidia-384 - third-party free
+</code></pre>
+
+<p># Install Nvidia graphics driver<br />
+<code>miner@vertminer:~$ sudo apt-get install nvidia-396</code></p>
+
+<p># Download and install latest CUDA toolkit <code>https://developer.nvidia.com/cuda-toolkit</code></p>
+
+<pre><code>miner@vertminer:~$ wget https://developer.nvidia.com/compute/cuda/9.1/Prod/local_installers/cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64
+</code></pre>
+
+<p># Rename downloaded CUDA file to <code>.deb</code></p>
+
+<pre><code>miner@vertminer:~$ mv cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64 cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64.deb
+</code></pre>
+
+<p># Install CUDA <code>.deb</code>; add public PGP key for CUDA<br />
+<code>miner@vertminer:~$ sudo dpkg -i cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64.deb</code><br />
+<code>miner@vertminer:~$ sudo apt-key add /var/cuda-repo-9-1-local/7fa2af80.pub</code><br />
+<code>miner@vertminer:~$ sudo apt-get update</code></p>
+
+<p># Install CUDA from repository<br />
+<code>miner@vertminer:~$ sudo apt-get install cuda</code></p>
+
+<p># Enable Nvidia drivers and reboot<br />
+<code>miner@vertminer:~$ sudo nvidia-xconfig ; sudo reboot</code></p>
+
+<p># Wait a minute, then log back in via <code>SSH</code><br />
+<code>~ ssh 192.168.1.11 -l miner</code></p>
+
+<p># Enable fan speed adjustment for multiple GPUs</p>
+
+<pre><code>miner@vertminer:~$ sudo nvidia-xconfig --allow-empty-initial-configuration --enable-all-gpus --cool-bits=28 --separate-x-screens
+</code></pre>
+
+<pre><code>Using X configuration file: &quot;/etc/X11/xorg.conf&quot;.
+Option &quot;AllowEmptyInitialConfiguration&quot; &quot;True&quot; added to Screen &quot;Screen0&quot;.
+Option &quot;AllowEmptyInitialConfiguration&quot; &quot;True&quot; added to Screen &quot;Screen0 (1)&quot;.
+Option &quot;AllowEmptyInitialConfiguration&quot; &quot;True&quot; added to Screen &quot;Screen0 (2)&quot;.
+Option &quot;AllowEmptyInitialConfiguration&quot; &quot;True&quot; added to Screen &quot;Screen0 (3)&quot;.
+Backed up file '/etc/X11/xorg.conf' as '/etc/X11/xorg.conf.backup'
+New X configuration file written to '/etc/X11/xorg.conf'
+</code></pre>
+
+<p># Enable persistence mode for Nvidia drivers</p>
+
+<pre><code>miner@vertminer:~$ sudo nvidia-smi -pm ENABLED
+Enabled persistence mode for GPU 00000000:05:00.0.
+All done.
+</code></pre>
+
+<p># Set power limit on card to keep card(s) from ramping up to full speed</p>
+
+<pre><code>miner@vertminer:~$ sudo nvidia-smi -pl 110
+Power limit for GPU 00000000:05:00.0 was set to 110.00 W from 180.00 W.
+All done.
+</code></pre>
+
+<p># Create script to start the X server; <code>nvidia-settings</code> requires it to be running
+<code>miner@vertminer:~$ nano start-x.sh</code></p>
+
+<pre><code>#!/bin/bash
+# start x server 
+X :0 &amp;
+sleep 5
+export DISPLAY=:0
+sleep 3
+</code></pre>
+
+<p><code>ctrl+x</code> to save</p>
+
+<p># Give permissions to <code>start-x.sh</code>; run the script<br />
+<code>miner@vertminer:~$ chmod +x start-x.sh</code><br />
+<code>miner@vertminer:~$ sudo ./start-x.sh</code></p>
+
+<pre><code>X.Org X Server 1.18.4
+Release Date: 2016-07-19
+X Protocol Version 11, Revision 0
+Build Operating System: Linux 4.4.0-97-generic x86_64 Ubuntu
+Current Operating System: Linux vertminer 4.4.0-116-generic #140-Ubuntu SMP Mon Feb 12 21:23:04 UTC 2018 x86_64
+Kernel command line: BOOT_IMAGE=/boot/vmlinuz-4.4.0-116-generic root=UUID=c4b35f58-4dd6-4e0d-8ada-fb91344ffc9a ro
+Build Date: 13 October 2017  01:57:05PM
+xorg-server 2:1.18.4-0ubuntu0.7 (For technical support please see http://www.ubuntu.com/support) 
+Current version of pixman: 0.33.6
+	Before reporting problems, check http://wiki.x.org
+	to make sure that you have the latest version.
+Markers: (--) probed, (**) from config file, (==) default setting,
+	(++) from command line, (!!) notice, (II) informational,
+	(WW) warning, (EE) error, (NI) not implemented, (??) unknown.
+(==) Log file: &quot;/var/log/Xorg.0.log&quot;, Time: Mon May  7 22:10:39 2018
+(==) Using config file: &quot;/etc/X11/xorg.conf&quot;
+(==) Using system config directory &quot;/usr/share/X11/xorg.conf.d&quot;
+</code></pre>
+
+<p># Set fan speed via <code>SSH</code> <code>https://devtalk.nvidia.com/default/topic/1024489/linux/nvidia-settings-on-headless-server/</code></p>
+
+<pre><code>miner@vertminer:~$ DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -a [gpu:0]/GPUFanControlState=1
+
+  Attribute 'GPUFanControlState' (vertminer:0[gpu:0]) assigned value 1.
+</code></pre>
+
+<pre><code>miner@vertminer:~$ DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -a [fan:0]/GPUTargetFanSpeed=75
+
+  Attribute 'GPUTargetFanSpeed' (vertminer:0[fan:0]) assigned value 75.
+</code></pre>
+
+<hr />
+
+<h3 id="4-download-and-install-vertcoin-core">4.) Download and install Vertcoin Core</h3>
+
+<h4 id="optional-download-latest-vertcoin-core-release"><code>*OPTIONAL</code> Download latest Vertcoin Core release</h4>
+
+<blockquote>
+<p>There are security implications to downloading and running pre-compiled binaries. This provides a great convenience allowing the end user to run an application without requiring the dependencies to build from source.</p>
+</blockquote>
+
+<p>Instructions to download and install the latest Vertcoin Core binaries are provided, <strong>however it is recommended to build from source for any security minded user</strong>. <strong>Skip this section if you wish to compile Vertcoin Core from source</strong>.</p>
+
+<p># Download latest Vertcoin Core release</p>
+
+<pre><code>miner@vertminer:~$ wget https://github.com/vertcoin-project/vertcoin-core/releases/download/0.13.1/vertcoind-v0.13.1-linux-amd64.zip
+miner@vertminer:~$ unzip vertcoind-v0.13.1-linux-amd64.zip
+miner@vertminer:~$ chmod +x vertcoind vertcoin-cli vertcoin-tx
+miner@vertminer:~$ sudo mv vertcoind vertcoin-cli vertcoin-tx /usr/bin/
+
+# Clean up
+miner@vertminer:~$ rm vertcoind-v0.13.1-linux-amd64.zip
+</code></pre>
+
+<hr />
+
+<h4 id="build-vertcoind-recommended">Build <code>vertcoind</code> (Recommended)</h4>
+
+<p><strong>If you downloaded and installed the latest release of Vertcoin Core in the <code>*OPTIONAL</code> step above, you may skip this section where Vertcoin Core is built from source</strong>.</p>
+
+<p># Install <code>bitcoin</code> dependencies</p>
+
+<pre><code>Bitcoin Unix Build Notes: https://github.com/bitcoin/bitcoin/blob/master/doc/build-unix.md
+</code></pre>
+
+<p><code>miner@vertminer:~$ sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils python3 -y</code></p>
+
+<p># Install Boost library packages</p>
+
+<pre><code>miner@vertminer:~/vertcoin-core$  sudo apt-get install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev
+</code></pre>
+
+<p># Clone <code>vertcoin-core</code></p>
+
+<pre><code>miner@vertminer:~$ git clone https://github.com/vertcoin-project/vertcoin-core.git
+Cloning into 'vertcoin-core'...
+remote: Counting objects: 107501, done.
+remote: Compressing objects: 100% (24/24), done.
+remote: Total 107501 (delta 5), reused 11 (delta 2), pack-reused 107475
+Receiving objects: 100% (107501/107501), 46.65 MiB | 14.33 MiB/s, done.
+Resolving deltas: 100% (83879/83879), done.
+Checking connectivity... done.
+</code></pre>
+
+<p># Change directories to <code>vertcoin-core</code></p>
+
+<pre><code>miner@vertminer:~$ ls
+vertcoin-core
+miner@vertminer:~$ cd vertcoin-core/
+miner@vertminer:~/vertcoin-core$
+</code></pre>
+
+<p># Install db4.8 packages</p>
+
+<pre><code>miner@vertminer:~/vertcoin-core$ sudo apt-get install software-properties-common
+miner@vertminer:~/vertcoin-core$ sudo add-apt-repository ppa:bitcoin/bitcoin
+miner@vertminer:~/vertcoin-core$ sudo apt-get update
+miner@vertminer:~/vertcoin-core$ sudo apt-get install libdb4.8-dev libdb4.8++-dev
+</code></pre>
+
+<h4 id="memory-requirements">Memory Requirements</h4>
+
+<p>C++ compilers are memory-hungry. It is recommended to have at least 1.5 GB of memory available when compiling Bitcoin Core. On systems with less, gcc can be tuned to conserve memory with additional CXXFLAGS:</p>
+
+<p><code>NOTE:</code> The mining rig used in this guide has 4-8GB of RAM, if you have less than 1.5GB of RAM configure with the flags specified below.</p>
+
+<pre><code>./configure CXXFLAGS=&quot;--param ggc-min-expand=1 --param ggc-min-heapsize=32768&quot;
+</code></pre>
+
+<h4 id="building-the-vertcoin-core-daemon">Building the Vertcoin Core daemon</h4>
+
+<p><code>miner@vertminer:~/vertcoin-core$ ./autogen.sh</code><br />
+<code>miner@vertminer:~/vertcoin-core$ ./configure</code></p>
+
+<pre><code>Options used to compile and link:
+  with wallet   = yes
+  with gui / qt = no
+  with sse2     = no
+  with zmq      = no
+  with test     = yes
+  with bench    = yes
+  with upnp     = auto
+  use asm       = yes
+  debug enabled = no
+  werror        = no
+
+  target os     = linux
+  build os      =
+
+  CC            = gcc
+  CFLAGS        = -g -O2 -fPIC
+  CPPFLAGS      =  -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS
+  CXX           = g++ -std=c++11
+  CXXFLAGS      = -g -O2 -Wall -Wextra -Wformat -Wvla -Wformat-security -Wno-unused-parameter
+  LDFLAGS       =
+  ARFLAGS       = cr
+</code></pre>
+
+<pre><code># compiling vertcoin core will take some time 
+miner@vertminer:~/vertcoin-core$ make
+</code></pre>
+
+<pre><code>Making all in src
+make[1]: Entering directory '/home/miner/vertcoin-core/src'
+make[2]: Entering directory '/home/miner/vertcoin-core/src'
+(...)
+make[2]: Leaving directory '/home/miner/vertcoin-core/src'
+make[1]: Leaving directory '/home/miner/vertcoin-core/src'
+Making all in doc/man
+make[1]: Entering directory '/home/miner/vertcoin-core/doc/man'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/miner/vertcoin-core/doc/man'
+make[1]: Entering directory '/home/miner/vertcoin-core'
+make[1]: Nothing to be done for 'all-am'.
+make[1]: Leaving directory '/home/miner/vertcoin-core'
+miner@vertminer:~/vertcoin-core$
+</code></pre>
+
+<p># Install the freshly built Vertcoin binaries<br />
+<code>miner@vertminer:~/vertcoin-core$ sudo make install</code></p>
+
+<p># Change directories back to home <code>~/</code><br />
+<code>miner@vertminer:~/vertcoin-core$ cd</code></p>
+
+<p># Clean up<br />
+<code>miner@vertminer:~$ sudo rm -r vertcoin-core/</code></p>
+
+<p># Create the Vertcoin data directory<br />
+<code>miner@vertminer:~$ mkdir .vertcoin</code></p>
+
+<hr />
+
+<h3 id="5-transfer-blockchain-to-ubuntu-server">5.) Transfer Blockchain to Ubuntu Server</h3>
+
+<blockquote>
+<p>WinSCP (Windows Secure Copy) is a free and open-source SFTP, FTP, WebDAV, Amazon S3 and SCP client for Microsoft Windows. Its main function is secure file transfer between a local and a remote computer. Beyond this, WinSCP offers basic file manager and file synchronization functionality. For secure transfers, it uses Secure Shell (SSH) and supports the SCP protocol in addition to SFTP.</p>
+</blockquote>
+
+<p>Download and install <code>WinSCP:</code> <code>https://winscp.net/eng/download.php</code></p>
+
+<p>When <code>Vertcoin Core</code> is finished syncing to the blockchain, exit <code>Vertcoin Core</code> so that it safely shuts down ensuring no data is corrupted.</p>
+
+<p>Proceed by running <code>WinSCP</code>, you will be met with a <code>Login</code> prompt asking for a Host name, Port number, User name and Password. Login to your mining rig like so, please note that your miner&rsquo;s <code>IP</code> address may be different than what is listed below.</p>
+
+<pre><code>File protocol: SFTP
+Host name: 192.168.1.11
+Port number: 22
+User name: miner
+Password: yourpasswordhere
+</code></pre>
+
+<p><img src="https://i.imgur.com/odekZ32.png" alt="Login" /><br />
+<img src="https://i.imgur.com/SlDMCmN.png" alt="Connection" /></p>
+
+<p>Ensure <code>Optimize connection buffer size</code> is unchecked for an easy tansfer.</p>
+
+<p><code>Default Windows Directory (Vertcoin): C:\Users\%USER%\AppData\Roaming\Vertcoin</code></p>
+
+<p>While logged into your mining rig, copy the folders <code>blocks</code> and <code>chainstate</code> to the <code>/home/miner/.vertcoin</code> folder. This will allow us to side-load the Vertcoin blockchain and bootstrap faster than if we had the <code>vertcoind</code> daemon do all the work.</p>
+
+<h4 id="exit-the-vertcoin-core-wallet-before-transferring-data-to-prevent-corrupted-blockchain">Exit the Vertcoin Core wallet before transferring data to prevent corrupted blockchain</h4>
+
+<p><img src="https://i.imgur.com/1stjro7.png" alt="EnterDir" />
+<img src="https://i.imgur.com/1U5Im4v.png" alt="EnterPath" />
+<img src="https://i.imgur.com/JufOJHc.png" alt="CopyPaste" />
+<img src="https://i.imgur.com/M3WNspB.png" alt="Transfer" /></p>
+
+<p>Once the blockchain files have finished copying to your mining rig, move back over to your <code>SSH</code> session with your mining rig&hellip;</p>
+
+<h4 id="create-vertcoin-conf-configuration-file">Create <code>vertcoin.conf</code> configuration file</h4>
+
+<pre><code>Low Bandwidth Usage Config: 
+# Maintain at most N connections to peers
+maxconnections=20  
+# Tries to keep outbound traffic under the given target (in MiB per 24h), 0 = no limit  
+maxuploadtarget=500  
+</code></pre>
+
+<p># Create <code>vertcoin.conf</code> for Vertcoin Core</p>
+
+<pre><code>miner@vertminer:~$ cd .vertcoin/
+miner@vertminer:~/.vertcoin$ nano vertcoin.conf
+</code></pre>
+
+<pre><code>server=1
+rpcuser=vertminer
+rpcpassword=yoursecurepasswordgoeshere
+
+# makes client run in background
+daemon=1
+
+# https://jlopp.github.io/bitcoin-core-config-generator/ lopp.net optimizations
+dbcache=100
+maxorphantx=10
+maxmempool=50
+# leave maxconnections at 40 for full node; 15 for full node + p2pool
+maxconnections=40
+maxuploadtarget=500
+</code></pre>
+
+<p><code>ctrl+x</code> to save</p>
+
+<p># Start the <code>vertcoin</code> daemon and begin blockchain sync</p>
+
+<pre><code>miner@vertminer:~/.vertcoin$ cd
+miner@vertminer:~$ vertcoind &amp;
+[1] 3234
+
+</code></pre>
+
+<pre><code>miner@vertminer:~$ tail -f .vertcoin/debug.log 
+
+2018-05-08 02:43:21 Using wallet wallet.dat
+2018-05-08 02:43:21 CDBEnv::Open: LogDir=/home/miner/.vertcoin/database ErrorFile=/home/miner/.vertcoin/db.log
+2018-05-08 02:43:21 Cache configuration:
+2018-05-08 02:43:21 * Using 2.0MiB for block index database
+2018-05-08 02:43:21 * Using 8.0MiB for chain state database
+2018-05-08 02:43:21 * Using 90.0MiB for in-memory UTXO set (plus up to 47.7MiB of unused mempool space)
+2018-05-08 02:43:21 init message: Loading block index...
+2018-05-08 02:43:21 Opening LevelDB in /home/miner/.vertcoin/blocks/index
+2018-05-08 02:43:21 Opened LevelDB successfully
+2018-05-08 02:43:21 Using obfuscation key for /home/miner/.vertcoin/blocks/index: 0000000000000000
+
+</code></pre>
+
+<h4 id="quick-note-about-blockchain-syncing">Quick note about blockchain syncing</h4>
+
+<pre><code>Vertcoin Core is now synchronizing, this process can take up to an hour to sync 
+headers and verify all of the downloaded blocks. Vertcoin 0.13.0 has shown major
+improvements to loading time of the blockchain and can take as little as 
+two minutes to fully load.
+
+You can monitor system resources by issuing the htop command and check up on 
+vertcoind by issuing the following commands: 
+
+# Display output of Vertcoin debug.log; ctrl+c to stop  
+miner@vertminer:~$ tail -f .vertcoin/debug.log
+
+# Show blockchain information  
+miner@vertminer:~$ vertcoin-cli getblockchaininfo
+
+# Show current block  
+miner@vertminer:~$ vertcoin-cli getblockcount  
+</code></pre>
+
+<p>You may continue on while <code>vertcoind</code> catches up to the blockchain &hellip;</p>
+
+<hr />
+
+<h3 id="6-download-and-configure-p2pool-vtc">6.) Download and configure <code>p2pool-vtc</code></h3>
+
+<blockquote>
+<p>P2Pool is a decentralized Bitcoin mining pool that works by creating a peer-to-peer network of miner nodes.</p>
+
+<p>P2Pool creates a new block chain in which the difficulty is adjusted so a new block is found every 30 seconds. The blocks that get into the P2Pool block chain (called the &ldquo;share chain&rdquo;) are the same blocks that would get into the Bitcoin block chain, only they have a lower difficulty target. Whenever a peer announces a new share found (new block in the P2Pool block chain), it is received by the other peers, and the other peers verify that this block contains payouts for all the previous miners who found a share (and announced it) that made it into the P2Pool share chain. This continues until some peer finds a block that has a difficulty that meets the Bitcoin network&rsquo;s difficulty target. This peer announces this block to the Bitcoin network and miners who have submitted shares for this block are paid in the generation transaction, proportionally to how many shares they have found in the last while. - Unknown author [3]</p>
+</blockquote>
+
+<p><code>p2pool-vtc Documentation: https://github.com/vertcoin-project/p2pool-vtc</code></p>
+
+<p># Install <code>p2pool-vtc</code> dependencies and <code>python-pip</code><br />
+<code>pi@raspberrypi:~ $ sudo apt-get install python-rrdtool python-pygame python-scipy python-twisted python-twisted-web python-imaging python-pip</code></p>
+
+<p># Clone <code>p2pool-vtc</code></p>
+
+<pre><code>miner@vertminer:~$ git clone https://github.com/vertcoin-project/p2pool-vtc.git
+Cloning into 'p2pool-vtc'...
+remote: Counting objects: 8393, done.
+remote: Total 8393 (delta 0), reused 0 (delta 0), pack-reused 8393
+Receiving objects: 100% (8393/8393), 2.54 MiB | 0 bytes/s, done.
+Resolving deltas: 100% (5611/5611), done.
+Checking connectivity... done.
+</code></pre>
+
+<p># Change directories to <code>p2pool-vtc</code><br />
+<code>miner@vertminer:~$ cd p2pool-vtc/</code></p>
+
+<p># Install <code>requirements.txt</code> dependencies<br />
+<code>miner@vertminer:~/p2pool-vtc$ pip install -r requirements.txt</code></p>
+
+<pre><code>Collecting Twisted&gt;=12.2.0 (from -r requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/12/2a/e9e4fb2e6b2f7a75577e0614926819a472934b0b85f205ba5d5d2add54d0/Twisted-18.4.0.tar.bz2 (3.0MB)
+    100% |████████████████████████████████| 3.0MB 98kB/s 
+Collecting argparse&gt;=1.2.1 (from -r requirements.txt (line 2))
+  Downloading https://files.pythonhosted.org/packages/f2/94/3af39d34be01a24a6e65433d19e107099374224905f1e0cc6bbe1fd22a2f/argparse-1.4.0-py2.py3-none-any.whl
+Collecting pyOpenSSL&gt;=0.13 (from -r requirements.txt (line 3))
+  Downloading https://files.pythonhosted.org/packages/79/db/7c0cfe4aa8341a5fab4638952520d8db6ab85ff84505e12c00ea311c3516/pyOpenSSL-17.5.0-py2.py3-none-any.whl (53kB)
+    100% |████████████████████████████████| 61kB 2.2MB/s 
+Collecting Automat&gt;=0.3.0 (from Twisted&gt;=12.2.0-&gt;-r requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/17/6a/1baf488c2015ecafda48c03ca984cf0c48c254622668eb1732dbe2eae118/Automat-0.6.0-py2.py3-none-any.whl
+</code></pre>
+
+<p># Configure P2Pool<br />
+<code>miner@vertminer:~/p2pool-vtc$ cd lyra2re-hash-python/</code><br />
+<code>miner@vertminer:~/p2pool-vtc/lyra2re-hash-python$ git submodule init</code><br />
+<code>miner@vertminer:~/p2pool-vtc/lyra2re-hash-python$ git submodule update</code><br />
+<code>miner@vertminer:~/p2pool-vtc/lyra2re-hash-python$ sudo python setup.py install</code></p>
+
+<p># Download alternate  web frontend for P2Pool<br />
+<code>miner@vertminer:~/p2pool-vtc/lyra2re-hash-python$ cd</code><br />
+<code>miner@vertminer:~$ git clone https://github.com/hardcpp/P2PoolExtendedFrontEnd.git</code><br />
+<code>miner@vertminer:~$ cd P2PoolExtendedFrontEnd</code></p>
+
+<p># Move all files in <code>P2PoolExtendedFrontEnd</code> to the <code>web-static</code> folder in <code>p2pool-vtc</code><br />
+<code>miner@vertminer:~/P2PoolExtendedFrontEnd$ mv * /home/miner/p2pool-vtc/web-static/</code><br />
+<code>miner@vertminer:~/P2PoolExtendedFrontEnd $ cd</code></p>
+
+<p># Clean up<br />
+<code>miner@vertminer:~ $ sudo rm -r P2PoolExtendedFrontEnd/</code></p>
+
+<hr />
+
+<h3 id="7-configure-firewall-for-vertcoin-core-p2pool-traffic">7.) Configure firewall for Vertcoin Core &amp; P2Pool traffic</h3>
+
+<p>Please note that your <code>IP</code> range may be different than what I have listed below. If your router <code>IP</code> address is <code>192.168.1.1</code> then the instructions above require no alterations. If your <code>IP</code> address is something like <code>192.168.56.1</code> or <code>10.0.0.1</code> then you will need to modify the &lsquo;ufw allow from <code>192.168.1.0/24</code> to any port 22&rsquo; to &lsquo;ufw allow from <code>192.168.56.0/24</code>(&hellip;)&rsquo; or &lsquo;ufw allow from <code>10.0.0.0/24</code>(&hellip;)&rsquo; respectively.</p>
+
+<p># Install <code>UFW</code><br />
+<code>miner@vertminer:~$ sudo apt-get install ufw</code></p>
+
+<hr />
+
+<blockquote>
+<p><code>Fail2ban</code> is a daemon that can be run on your server to dynamically block clients that fail to authenticate correctly with your services repeatedly. This can help mitigate the affect of brute force attacks and illegitimate users of your services like <code>SSH</code>.</p>
+
+<pre><code>Fail2ban Documentation: https://www.digitalocean.com/community/tutorials/how-fail2ban-works-to-protect-services-on-a-linux-server`
+</code></pre>
+</blockquote>
+
+<p># Download and install <code>fail2ban</code> package<br />
+<code>pi@raspberrypi:~ $ sudo apt-get update ; sudo apt-get install fail2ban</code></p>
+
+<hr />
+
+<p># Escalate to <code>root</code> and configure <code>UFW</code></p>
+
+<p><code>pi@raspberrypi:~ $ sudo su</code><br />
+<code>root@vertminer:/home/miner# ufw default deny incoming</code></p>
+
+<pre><code>Default incoming policy changed to 'deny'
+(be sure to update your rules accordingly)
+</code></pre>
+
+<p><code>root@vertminer:/home/miner# ufw default allow outgoing</code></p>
+
+<pre><code>Default outgoing policy changed to 'allow'
+(be sure to update your rules accordingly)
+</code></pre>
+
+<p><code>root@vertminer:/home/miner# ufw allow from 192.168.1.0/24 to any port 22 comment 'allow SSH from local LAN'</code><br />
+<code>root@vertminer:/home/miner# ufw allow 5889 comment 'allow vertcoin core'</code></p>
+
+<h4 id="network-1-firewall-configuration">Network 1 - Firewall Configuration</h4>
+
+<blockquote>
+<p>If you are a smaller miner with 2 graphics cards or less or are using your CPU, it is recommended to use Network 2. If you are a larger miner with multiple cards and/or a hash rate larger than 100Mh, it is recommended to use Network 1.</p>
+</blockquote>
+
+<p><code>root@vertminer:/home/miner# ufw allow 9346 comment 'allow --network 1 p2p port'</code><br />
+<code>root@vertminer:/home/miner# ufw allow 9171 comment 'allow --network 1 mining port'</code></p>
+
+<h4 id="network-2-firewall-configuration">Network 2 - Firewall Configuration</h4>
+
+<blockquote>
+<p>If you are a smaller miner with 2 graphics cards or less or are using your CPU, it is recommended to use Network 2. If you are a larger miner with multiple cards and/or a hash rate larger than 100Mh, it is recommended to use Network 1.</p>
+</blockquote>
+
+<p><code>root@vertminer:/home/miner# ufw allow 9347 comment 'allow --network 2 p2p port'</code><br />
+<code>root@vertminer:/home/miner# ufw allow 9181 comment 'allow --network 2 mining port'</code></p>
+
+<p># <strong>Open Unitus port if you intend on merge mining</strong><br />
+<code>root@miner:/home/miner# ufw allow 50603 comment 'allow unitus core'</code></p>
+
+<p><code>root@vertminer:/home/miner# ufw enable</code></p>
+
+<pre><code>Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
+Firewall is active and enabled on system startup
+</code></pre>
+
+<p><code>root@vertminer:/home/miner# systemctl enable ufw</code></p>
+
+<pre><code>Synchronizing state of ufw.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable ufw
+</code></pre>
+
+<p><code>root@vertminer:/home/miner# ufw status</code></p>
+
+<pre><code>Status: active
+
+To                         Action      From
+--                         ------      ----
+22                         ALLOW       192.168.1.0/24             # allow SSH from local LAN
+5889                       ALLOW       Anywhere                   # allow vertcoin core
+9347                       ALLOW       Anywhere                   # allow --network 2 p2p port
+9181                       ALLOW       Anywhere                   # allow --network 2 mining port
+5889 (v6)                  ALLOW       Anywhere (v6)              # allow vertcoin core
+9347 (v6)                  ALLOW       Anywhere (v6)              # allow --network 2 p2p port
+9181 (v6)                  ALLOW       Anywhere (v6)              # allow --network 2 mining port
+</code></pre>
+
+<p># Give up <code>root</code><br />
+<code>root@vertminer:/home/miner# exit</code></p>
+
+<p>Open a browser window and navigate to your router page, from there you can port forward your mining rig.<br />
+<code>TCP/UDP Port: 5889</code></p>
+
+<h4 id="this-will-make-your-node-public-supporting-the-health-of-the-vertcoin-network-by-keeping-it-decentralized-and-populated-with-one-more-node">This will make your node public, supporting the health of the Vertcoin network by keeping it decentralized and populated with one more node.</h4>
+
+<hr />
+
+<h3 id="8-download-configure-and-compile-latest-ccminer">8.) Download, configure, and compile latest <code>ccminer</code></h3>
+
+<p># Clone <code>ccminer</code> github repo</p>
+
+<pre><code>miner@vertminer:~$ git clone https://github.com/tpruvot/ccminer.git
+Cloning into 'ccminer'...
+remote: Counting objects: 8395, done.
+remote: Compressing objects: 100% (30/30), done.
+remote: Total 8395 (delta 7), reused 15 (delta 5), pack-reused 8360
+Receiving objects: 100% (8395/8395), 65.12 MiB | 18.13 MiB/s, done.
+Resolving deltas: 100% (6085/6085), done.
+Checking connectivity... done.
+</code></pre>
+
+<p># Change directories to the newly cloned <code>ccminer</code><br />
+<code>miner@vertminer:~$ cd ccminer/</code></p>
+
+<p># install dependencies for building from source<br />
+<code>sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils python3 curl libcurl4-openssl-dev libpthread-stubs0-dev</code></p>
+
+<p># Run <code>autogen.sh</code> to prepare <code>ccminer</code> for building</p>
+
+<pre><code>miner@vertminer:~/ccminer$ ./autogen.sh 
+configure.ac:4: installing './config.sub'
+configure.ac:6: installing './missing'
+Makefile.am: installing './depcomp'
+</code></pre>
+
+<p># Configure <code>ccminer</code><br />
+<code>miner@vertminer:~/ccminer$ ./configure</code></p>
+
+<pre><code>(...)
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating compat/Makefile
+config.status: creating compat/jansson/Makefile
+config.status: creating ccminer-config.h
+config.status: executing depfiles commands
+</code></pre>
+
+<p># Build <code>ccminer</code>
+<code>miner@vertminer:~/ccminer$ ./build.sh</code></p>
+
+<pre><code>(...)
+make[2]: Leaving directory '/home/miner/ccminer'
+make[1]: Leaving directory '/home/miner/ccminer'
+</code></pre>
+
+<p><code>miner@vertminer:~/ccminer$ cd</code></p>
+
+<hr />
+
+<h3 id="9-create-miner-script-p2pool-vtc-script-configure-boot-settings">9.) Create miner script, <code>p2pool-vtc</code> script, Configure boot settings</h3>
+
+<p># Create miner script<br />
+<code>miner@vertminer:~$ nano start-mining.sh</code></p>
+
+<pre><code>#!/bin/bash
+# -a = algo
+# -i = intensity
+# 
+# NOTE: the intensity setting can be set higher than 20, but will crash the miner
+# when it reaches it's threshold. Play around with the value to see what you like.
+# 
+# NOTE: make sure the port number for your mining rig matches the network you configured
+# your firewall for.
+# Network 1 = 9171
+# Network 2 = 9181 
+# 
+cd ccminer
+./ccminer -a lyra2v2 -i 20 -o stratum+tcp://localhost:9181 -u vtcaddressgoeshere -p x
+</code></pre>
+
+<p># Give mining script permissions<br />
+<code>miner@vertminer:~$ chmod +x start-mining.sh</code></p>
+
+<p># Configure boot settings to start <code>vertcoind</code> on reboot<br />
+<code>miner@vertminer:~$ crontab -u miner -e</code></p>
+
+<pre><code># Edit this file to introduce tasks to be run by cron.
+#
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+#
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').#
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+#
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+#
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h  dom mon dow   command
+
+@reboot vertcoind
+
+# Optional, uncomment to make active
+#@reboot /home/miner/start-p2pool.sh
+#@reboot /home/miner/start-mining.sh
+</code></pre>
+
+<p><code>ctrl+x</code> to save</p>
+
+<p># Clean up <code>home</code> directory<br />
+<code>miner@vertminer:~$ rm cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64.deb start-x.sh</code></p>
+
+<p># Remove packages no longer needed<br />
+<code>miner@vertminer:~$ sudo apt-get autoremove ; sudo apt-get autoclean</code></p>
+
+<p>If you intend on setting up a Unitus full node and merge mining, set your <code>P2Pool</code> script to launch with <code>--merged</code> and your Unitus node details.</p>
+
+<p># Create <code>start-p2pool.sh</code> script</p>
+
+<pre><code>#!/bin/bash
+# network 1 = --net vertcoin
+# network 2 = --net vertcoin2
+
+cd p2pool-vtc/
+
+# LAUNCHING WITHOUT MERGED MINING
+# nohup python run_p2pool.py --net vertcoin2 -a yourvertcoinaddressgoeshere &amp;
+
+# LAUNCHING WITH MERGED MINING
+# nohup python run_p2pool.py --net vertcoin2 -a yourvertcoinaddressgoeshere --merged http://unitusnode:yourreallysecureRPCpasswordhere &amp;
+
+nohup python run_p2pool.py --net vertcoin2 -a yourvertcoinaddressgoeshere &amp;
+</code></pre>
+
+<p><code>ctrl+x</code> to save</p>
+
+<p># Give <code>start-p2pool.sh</code> script permissions<br />
+<code>miner@vertminer:~$ chmod +x start-p2pool.sh</code></p>
+
+<p># Start <code>p2pool-vtc</code><br />
+<code>miner@vertminer:~$ ./start-p2pool.sh</code></p>
+
+<p># Monitor P2Pool log; ctrl+x to stop<br />
+<code>miner@vertminer:~$ tail -f p2pool-vtc/data/vertcoin2/log</code></p>
+
+<hr />
+
+<h3 id="10-start-mining">10.) Start mining!</h3>
+
+<pre><code>miner@vertminer:~$ ls
+ccminer  p2pool-vtc  start-mining.sh  start-p2pool.sh
+</code></pre>
+
+<p># Run <code>start-mining.sh</code> script</p>
+
+<pre><code>miner@vertminer:~$ ./start-mining.sh 
+
+*** ccminer 2.2.5 for nVidia GPUs by tpruvot@github ***
+    Built with the nVidia CUDA Toolkit 9.1 64-bits
+
+  Originally based on Christian Buchner and Christian H. project
+  Include some kernels from alexis78, djm34, djEzo, tsiv and krnlx.
+
+BTC donation address: 1AJdfCpLWPNoAMDfHF1wD5y8VgKSSTHxPo (tpruvot)
+
+[2018-05-07 23:25:45] Starting on stratum+tcp://localhost:9181
+[2018-05-07 23:25:45] NVML GPU monitoring enabled.
+[2018-05-07 23:25:45] 1 miner thread started, using 'lyra2v2' algorithm.
+[2018-05-07 23:25:45] Stratum difficulty set to 1 (0.00391)
+[2018-05-07 23:25:45] lyra2v2 block 924582, diff 44703.635
+[2018-05-07 23:25:45] GPU #0: Intensity set to 20, 1048576 cuda threads
+[2018-05-07 23:25:46] GPU #0: GeForce GTX 960, 13.78 MH/s
+[2018-05-07 23:25:46] accepted: 1/1 (diff 0.076), 13.78 MH/s yes!
+[2018-05-07 23:25:47] accepted: 2/2 (diff 0.004), 13.79 MH/s yes!
+[2018-05-07 23:25:47] accepted: 3/3 (diff 0.008), 13.76 MH/s yes!
+[2018-05-07 23:25:47] accepted: 4/4 (diff 0.013), 13.77 MH/s yes!
+[2018-05-07 23:25:51] GPU #0: GeForce GTX 960, 13.78 MH/s
+[2018-05-07 23:25:51] accepted: 5/5 (diff 0.005), 13.77 MH/s yes!
+[2018-05-07 23:25:51] accepted: 6/6 (diff 0.004), 13.77 MH/s yes!
+[2018-05-07 23:25:52] accepted: 7/7 (diff 0.009), 13.77 MH/s yes!
+[2018-05-07 23:25:52] accepted: 8/8 (diff 0.007), 13.77 MH/s yes!
+[2018-05-07 23:25:53] accepted: 9/9 (diff 0.012), 13.77 MH/s yes!
+[2018-05-07 23:25:54] accepted: 10/10 (diff 0.124), 13.77 MH/s yes!
+</code></pre>
+
+<hr />
+
+<h3 id="optional-setup-unitus-full-node-for-merged-mining"><code>*OPTIONAL</code> Setup Unitus full node for merged mining</h3>
+
+<p>A <code>Unitus</code> full node may be setup to allow for merged mining rewards when mining with <code>p2pool-vtc</code>. Running two full nodes together on the same mining rig will mean that you will be storing two blockchains on your storage drive rather than one, and you will be using more resources on load and at idle.</p>
+
+<p>Before you get started consider downloading and installing the latest stable release of <a href="https://github.com/unitusdev/unitus/releases">Unitus Core</a> wallet onto a computer you use that is not your mining rig. This step is <code>*OPTIONAL</code> but recommended. Doing so will speed up the process of syncing <code>unitusd</code> later.</p>
+
+<p>This copy of the blockchain that is syncing to side-load onto our mining rig later.</p>
+
+<p><code>Unitus Core Download Link: https://github.com/unitusdev/unitus/releases</code><br />
+<code>Default Windows Directory (Unitus): C:\Users\%USER%\AppData\Roaming\Unitus</code></p>
+
+<p>We will use this copy of the blockchain that is syncing to side-load onto our mining rig later.</p>
+
+<hr />
+
+<h4 id="optional-download-latest-unitus-core-release"><code>*OPTIONAL</code> Download latest Unitus Core release</h4>
+
+<blockquote>
+<p>There are security implications to downloading and running pre-compiled binaries. This provides a great convenience allowing the end user to run an application without requiring the dependencies to build from source.</p>
+</blockquote>
+
+<p>Instructions to download and install the latest Unitus Core binaries are provided, <strong>however it is recommended to build from source for any security minded user</strong>. <strong>Skip this section if you wish to compile Unitus Core from source</strong>.</p>
+
+<p># Download latest Unitus Core release</p>
+
+<pre><code>miner@vertminer:~$ wget https://github.com/unitusdev/unitus/releases/download/0.14.2.2/unitus-0.14.2.2-amd64.tar.xz
+miner@vertminer:~$ tar -xf unitus-0.14.2.2-amd64.tar.xz
+miner@vertminer:~$ chmod +x unitusd unitus-cli unitus-tx
+miner@vertminer:~$ sudo mv unitusd unitus-cli unitus-tx /usr/bin/
+
+# Clean up
+miner@vertminer:~$  rm -r unitus*
+</code></pre>
+
+<hr />
+
+<h4 id="build-unitusd-recommended">Build <code>unitusd</code> (Recommended)</h4>
+
+<p><strong>If you downloaded and installed the latest release of Vertcoin Core in the <code>*OPTIONAL</code> step above, you may skip this section where Vertcoin Core is built from source</strong>.</p>
+
+<p># Install <code>bitcoin</code> dependencies</p>
+
+<pre><code>Bitcoin Unix Build Notes: https://github.com/bitcoin/bitcoin/blob/master/doc/build-unix.md
+</code></pre>
+
+<p><code>miner@vertminer:~$ sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils python3 -y</code></p>
+
+<p># Install Boost library packages</p>
+
+<pre><code>miner@vertminer:~/vertcoin-core$  sudo apt-get install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev
+</code></pre>
+
+<p># Clone <code>unitus</code></p>
+
+<pre><code>miner@vertminer:~$ git clone https://github.com/unitusdev/unitus.git
+Cloning into 'unitus'...
+remote: Counting objects: 4187, done.
+remote: Compressing objects: 100% (181/181), done.
+remote: Total 4187 (delta 161), reused 111 (delta 67), pack-reused 3938
+Receiving objects: 100% (4187/4187), 30.36 MiB | 19.66 MiB/s, done.
+Resolving deltas: 100% (1906/1906), done.
+Checking connectivity... done.
+</code></pre>
+
+<p># Change directories to <code>unitus</code></p>
+
+<pre><code>miner@vertminer:~$ ls
+p2pool-vtc  unitus  
+miner@vertminer:~$ cd unitus/
+miner@vertminer:~/unitus$
+</code></pre>
+
+<p># Install db4.8 packages</p>
+
+<pre><code>miner@vertminer:~/unitus$ sudo apt-get install software-properties-common
+miner@vertminer:~/unitus$ sudo add-apt-repository ppa:bitcoin/bitcoin
+miner@vertminer:~/unitus$ sudo apt-get update
+miner@vertminer:~/unitus$ sudo apt-get install libdb4.8-dev libdb4.8++-dev
+</code></pre>
+
+<h4 id="memory-requirements-1">Memory Requirements</h4>
+
+<p>C++ compilers are memory-hungry. It is recommended to have at least 1.5 GB of memory available when compiling Bitcoin Core. On systems with less, gcc can be tuned to conserve memory with additional CXXFLAGS:</p>
+
+<p><code>NOTE:</code> The mining rig used in this guide has 4-8GB of RAM, if you have less than 1.5GB of RAM configure with the flags specified below.</p>
+
+<pre><code>./configure CXXFLAGS=&quot;--param ggc-min-expand=1 --param ggc-min-heapsize=32768&quot;
+</code></pre>
+
+<h4 id="building-the-unitus-core-daemon">Building the Unitus Core daemon</h4>
+
+<p><code>miner@vertminer:~/unitus$ ./autogen.sh</code><br />
+<code>miner@vertminer:~/unitus$ ./configure</code></p>
+
+<pre><code>Options used to compile and link:
+  with wallet   = yes
+  with gui / qt = no
+  with zmq      = no
+  with test     = no
+  with bench    = no
+  with upnp     = auto
+  debug enabled = no
+  werror        = no
+
+  target os     = linux
+  build os      =
+
+  CC            = gcc
+  CFLAGS        = -g -O2
+  CPPFLAGS      =  -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS
+  CXX           = g++ -std=c++11
+  CXXFLAGS      = -g -O2 -Wall -Wextra -Wformat -Wvla -Wformat-security -Wno-unused-parameter
+  LDFLAGS       =
+</code></pre>
+
+<pre><code># compiling unitus core will take some time
+miner@vertminer:~/unitus$ make
+</code></pre>
+
+<pre><code>Making all in src
+make[1]: Entering directory '/home/miner/unitus/src'
+make[2]: Entering directory '/home/miner/unitus/src'
+  CXX      crypto/libbitcoinconsensus_la-aes.lo
+  CXX      crypto/libbitcoinconsensus_la-hmac_sha256.lo
+  CXX      crypto/libbitcoinconsensus_la-hmac_sha512.lo
+  CXX      crypto/libbitcoinconsensus_la-ripemd160.lo
+  CXX      crypto/libbitcoinconsensus_la-sha1.lo
+  CXX      crypto/libbitcoinconsensus_la-sha256.lo
+  CXX      crypto/libbitcoinconsensus_la-sha512.lo
+  CXX      libbitcoinconsensus_la-arith_uint256.lo
+  CXX      consensus/libbitcoinconsensus_la-merkle.lo
+  CXX      libbitcoinconsensus_la-hash.lo
+(...)
+make[2]: Leaving directory '/home/miner/unitus/src'
+make[1]: Leaving directory '/home/miner/unitus/src'
+Making all in doc/man
+make[1]: Entering directory '/home/miner/unitus/doc/man'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/miner/unitus/doc/man'
+make[1]: Entering directory '/home/miner/unitus'
+make[1]: Nothing to be done for 'all-am'.
+make[1]: Leaving directory '/home/miner/unitus'
+</code></pre>
+
+<p># Install the freshly built Unitus binaries<br />
+<code>miner@vertminer:~/unitus$ sudo make install</code></p>
+
+<p># Change directories back to home<code>~/</code><br />
+<code>miner@vertminer:~/unitus$ cd</code></p>
+
+<p># Clean up<br />
+<code>miner@vertminer:~$ sudo rm -r unitus/</code></p>
+
+<p># Create the Unitus data directory</p>
+
+<pre><code>miner@vertminer:~$ mkdir .unitus
+miner@vertminer:~$ cd .unitus/
+miner@vertminer:~/.unitus$
+</code></pre>
+
+<hr />
+
+<h4 id="configure-unitus-conf">Configure <code>unitus.conf</code></h4>
+
+<p># Create <code>unitus.conf</code>
+<code>miner@vertminer:~/.unitus$ nano unitus.conf</code></p>
+
+<pre><code># merged mining values documentation
+# https://cdn.discordapp.com/attachments/370500771168518155/415547042807676929/Merged-Mining_Guide.pdf
+server=1
+rpcuser=unitusnode
+rpcpassword=yoursecurepasswordgoeshere
+rpcport=6699
+rpcallowip=127.0.0.1
+algo=lyra2re2
+
+# makes client run in background
+daemon=1
+
+# cap maxconnections ; 40 is default
+maxconnections=40
+
+# maxuploadtarget in MB
+maxuploadtarget=5000
+</code></pre>
+
+<p><code>ctrl+x</code> to save</p>
+
+<hr />
+
+<h4 id="transfer-unitus-blockchain-to-mining-rig">Transfer Unitus blockchain to mining rig</h4>
+
+<blockquote>
+<p>WinSCP (Windows Secure Copy) is a free and open-source SFTP, FTP, WebDAV, Amazon S3 and SCP client for Microsoft Windows. Its main function is secure file transfer between a local and a remote computer. Beyond this, WinSCP offers basic file manager and file synchronization functionality. For secure transfers, it uses Secure Shell (SSH) and supports the SCP protocol in addition to SFTP.</p>
+</blockquote>
+
+<p>Download and install <code>WinSCP:</code> <code>https://winscp.net/eng/download.php</code></p>
+
+<p>When <code>Unitus Core</code> is finished syncing to the blockchain, exit <code>Unitus Core</code> so that it safely shuts down ensuring no data is corrupted.</p>
+
+<p>Proceed by running <code>WinSCP</code>, you will be met with a <code>Login</code> prompt asking for a Host name, Port number, User name and Password. Login to your mining rig like so, please note that your miner&rsquo;s <code>IP</code> address may be different than what is listed below.</p>
+
+<pre><code>File protocol: SFTP
+Host name: 192.168.1.11
+Port number: 22
+User name: miner
+Password: yourpasswordhere
+</code></pre>
+
+<p><img src="https://i.imgur.com/WGFA2pg.png" alt="Login" /><br />
+<img src="https://i.imgur.com/SlDMCmN.png" alt="Connection" /></p>
+
+<p>Ensure <code>Optimize connection buffer size</code> is unchecked for an easy tansfer.</p>
+
+<p><code>Default Windows Directory (Unitus): C:\Users\%USER%\AppData\Roaming\Unitus</code></p>
+
+<p>While logged into your mining rig, copy the folders <code>blocks</code> and <code>chainstate</code> to the <code>/home/miner/.unitus</code> folder. This will allow us to side-load the Vertcoin blockchain and bootstrap faster than if we had the <code>vertcoind</code> daemon do all the work.</p>
+
+<h4 id="exit-the-vertcoin-core-wallet-before-transferring-data-to-prevent-corrupted-blockchain-1">Exit the Vertcoin Core wallet before transferring data to prevent corrupted blockchain</h4>
+
+<p><img src="https://i.imgur.com/1stjro7.png" alt="EnterDir" />
+<img src="https://i.imgur.com/1U5Im4v.png" alt="EnterPath" />
+<img src="https://i.imgur.com/JufOJHc.png" alt="CopyPaste" />
+<img src="https://i.imgur.com/M3WNspB.png" alt="Transfer" /></p>
+
+<p>Once the blockchain files have finished copying to your mining rig, move back over to your <code>SSH</code> session with your mining rig&hellip;</p>
+
+<hr />
+
+<h5 id="edit-crontab-file-to-start-unitus-on-reboot-to-ensure-the-process-is-alive">Edit crontab file to start Unitus on reboot to ensure the process is alive</h5>
+
+<p># Configure crontab file to start unitusd on reboot<br />
+<code>miner@vertminer:~/.unitus$ crontab -u miner -e</code></p>
+
+<pre><code># Edit this file to introduce tasks to be run by cron.
+#
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+#
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').#
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+#
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+#
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h  dom mon dow   command
+
+@reboot vertcoind
+@reboot unitusd
+
+# Optional, uncomment to make active
+#@reboot /home/miner/start-p2pool.sh
+#@reboot /home/miner/start-mining.sh
+</code></pre>
+
+<p># <code>NOTE:</code> Make sure the blockchain has fully transferred to <code>/home/miner/.unitus</code> before starting <code>unitusd</code></p>
+
+<p># Change directories back to home<code>~/</code><br />
+<code>miner@vertminer:~/unitus$ cd</code></p>
+
+<p># Start the unitus daemon and begin blockchain sync</p>
+
+<pre><code>miner@vertminer:~$ unitusd &amp;
+[1] 2859
+miner@vertminer:~$ Unitus server starting
+
+[1]+  Done                    unitusd
+miner@vertminer:~$ tail -f .unitus/debug.log
+2018-05-20 23:10:53 * Using 2.0MiB for block index database
+2018-05-20 23:10:53 * Using 8.0MiB for chain state database
+2018-05-20 23:10:53 * Using 440.0MiB for in-memory UTXO set (plus up to 286.1MiB of unused mempool space)
+2018-05-20 23:10:53 init message: Loading block index...
+2018-05-20 23:10:53 Opening LevelDB in /home/miner/.unitus/blocks/index
+2018-05-20 23:10:53 Opened LevelDB successfully
+2018-05-20 23:10:53 Using obfuscation key for /home/miner/.unitus/blocks/index: 0000000000000000
+2018-05-20 23:10:53 Opening LevelDB in /home/miner/.unitus/chainstate
+2018-05-20 23:10:54 Opened LevelDB successfully
+2018-05-20 23:10:54 Using obfuscation key for /home/miner/.unitus/chainstate: 74c83329213bba46
+</code></pre>
+
+<h4 id="quick-note-about-blockchain-syncing-1">Quick note about blockchain syncing</h4>
+
+<pre><code>You can monitor system resources by issuing the htop command and check up on 
+unitusd by issuing the following commands: 
+# Display output of Unitus debug.log; ctrl+c to stop  
+miner@vertminer:~ $ tailf .unitus/debug.log
+
+# Show blockchain information  
+miner@vertminer:~ $ unitus-cli getblockchaininfo
+
+# Show current block  
+miner@vertminer:~ $ unitus-cli getblockcount  
+</code></pre>
+
+<p>You may continue on while <code>unitusd</code> catches up to the blockchain &hellip;</p>
+
+<hr />
+
+<h4 id="start-p2pool">Start P2Pool</h4>
+
+<pre><code>miner@vertminer:~$ ./start-p2pool.sh &amp;
+[1] 2920
+</code></pre>
+
+<p># Display output of Unitus debug.log; ctrl+c to stop<br />
+<code>miner@vertminer:~$ tail -f p2pool-vtc/data/vertcoin2/log</code></p>
+
+<pre><code>2018-05-20 19:24:57.763730 p2pool (version e69cf08-dirty)
+2018-05-20 19:24:57.763926
+2018-05-20 19:24:57.764080 Testing bitcoind RPC connection to 'http://127.0.0.1:5888/' with username 'miner'...
+2018-05-20 19:24:57.807722     ...success!
+2018-05-20 19:24:57.807960     Current block hash: 7bdc6f961a33c3f173081c52998edba17de4e25ab673c0e47ad6b12d1230a248
+2018-05-20 19:24:57.808108     Current block height: 931909
+2018-05-20 19:24:57.808229
+2018-05-20 19:24:57.808396 Testing bitcoind P2P connection to '127.0.0.1:5889'...
+2018-05-20 19:24:57.816781     ...success!
+2018-05-20 19:24:57.816935
+2018-05-20 19:24:57.817066 Determining payout address...
+2018-05-20 19:24:57.817444     ...success! Payout address: Vd1QbVRkY79EXDFC(...)
+2018-05-20 19:24:57.817540
+2018-05-20 19:24:57.817646 Loading shares...
+2018-05-20 19:24:57.818013     ...done loading 0 shares (0 verified)!
+2018-05-20 19:24:57.818097
+2018-05-20 19:24:57.818180 Initializing work...
+2018-05-20 19:24:57.883850     ...success!
+2018-05-20 19:24:57.884014
+2018-05-20 19:24:57.884118 Joining p2pool network using port 9347...
+2018-05-20 19:24:58.045157     ...success!
+2018-05-20 19:24:58.045420
+2018-05-20 19:24:58.047075 Listening for workers on '' port 9181...
+2018-05-20 19:24:58.069824     ...success!
+2018-05-20 19:24:58.069954
+2018-05-20 19:24:58.070038 Started successfully!
+2018-05-20 19:24:58.070136 Go to http://127.0.0.1:9181/ to view graphs and statistics!
+2018-05-20 19:24:58.070234 Donating 1.0% of work towards Vertcoin's development. Thank you!
+2018-05-20 19:24:58.070323 You can increase this amount with --give-author argument! (or decrease it, if you must)
+2018-05-20 19:24:58.070400
+**2018-05-20 19:24:58.320742 Got new merged mining work!**
+2018-05-20 19:24:59.866715 Outgoing connection to peer 174.103.130.177:9347 established. p2pool version: 1700 'a61a40f-dirty'
+2018-05-20 19:24:59.936496 Peer sent entire transaction c99d291b24f71a3165aa36b0f1de53dee6bfe376861b86d79ec78ed1b353f984 that was already received
+</code></pre>
+
+<pre><code>miner@vertminer:~$ unitus-cli getblockchaininfo
+{
+  &quot;chain&quot;: &quot;main&quot;,
+  &quot;blocks&quot;: 1414799,
+  &quot;headers&quot;: 1414799,
+  &quot;bestblockhash&quot;: &quot;0e969aa0bc086664fb2e854454a6c68051b4cb96a549e9d7a74fd5dae3d70334&quot;,
+  &quot;difficulty&quot;: 44975.61899176912,
+  &quot;difficulty_lyra2re2&quot;: 44975.61899176912,
+  &quot;difficulty_skein&quot;: 276772.7891326335,
+  &quot;difficulty_argon2d&quot;: 0.03972393577009033,
+  &quot;difficulty_yescrypt&quot;: 0.8410765163376883,
+  &quot;difficulty_x11&quot;: 35507060.42737293,
+  &quot;mediantime&quot;: 1526858254,
+  &quot;verificationprogress&quot;: 0.9999993176792203,
+  &quot;chainwork&quot;: &quot;13b3500000000000000000000000000000000000000000129b63aed53de3282a&quot;,
+  &quot;pruned&quot;: false,
+  &quot;softforks&quot;: [
+    {
+      &quot;id&quot;: &quot;bip34, bip65, bip66&quot;,
+      &quot;version&quot;: 4,
+      &quot;enforce&quot;: {
+        &quot;status&quot;: false,
+        &quot;found&quot;: 518,
+        &quot;required&quot;: 850,
+        &quot;window&quot;: 1000
+      },
+      &quot;reject&quot;: {
+        &quot;status&quot;: false,
+        &quot;found&quot;: 518,
+        &quot;required&quot;: 900,
+        &quot;window&quot;: 1000
+      }
+    }
+  ],
+  &quot;bip9_softforks&quot;: {
+  }
+}
+</code></pre>
+
+<h3 id="start-merged-mining">Start merged mining!</h3>
+
+<pre><code>miner@vertminer:~$ ls
+ccminer  p2pool-vtc  start-mining.sh  start-p2pool.sh
+</code></pre>
+
+<p># Run <code>start-mining.sh</code> script</p>
+
+<pre><code>miner@vertminer:~$ ./start-mining.sh 
+
+*** ccminer 2.2.5 for nVidia GPUs by tpruvot@github ***
+    Built with the nVidia CUDA Toolkit 9.1 64-bits
+
+  Originally based on Christian Buchner and Christian H. project
+  Include some kernels from alexis78, djm34, djEzo, tsiv and krnlx.
+
+BTC donation address: 1AJdfCpLWPNoAMDfHF1wD5y8VgKSSTHxPo (tpruvot)
+
+[2018-05-07 23:25:45] Starting on stratum+tcp://localhost:9181
+[2018-05-07 23:25:45] NVML GPU monitoring enabled.
+[2018-05-07 23:25:45] 1 miner thread started, using 'lyra2v2' algorithm.
+[2018-05-07 23:25:45] Stratum difficulty set to 1 (0.00391)
+[2018-05-07 23:25:45] lyra2v2 block 924582, diff 44703.635
+[2018-05-07 23:25:45] GPU #0: Intensity set to 20, 1048576 cuda threads
+[2018-05-07 23:25:46] GPU #0: GeForce GTX 960, 13.78 MH/s
+[2018-05-07 23:25:46] accepted: 1/1 (diff 0.076), 13.78 MH/s yes!
+[2018-05-07 23:25:47] accepted: 2/2 (diff 0.004), 13.79 MH/s yes!
+[2018-05-07 23:25:47] accepted: 3/3 (diff 0.008), 13.76 MH/s yes!
+[2018-05-07 23:25:47] accepted: 4/4 (diff 0.013), 13.77 MH/s yes!
+[2018-05-07 23:25:51] GPU #0: GeForce GTX 960, 13.78 MH/s
+[2018-05-07 23:25:51] accepted: 5/5 (diff 0.005), 13.77 MH/s yes!
+[2018-05-07 23:25:51] accepted: 6/6 (diff 0.004), 13.77 MH/s yes!
+[2018-05-07 23:25:52] accepted: 7/7 (diff 0.009), 13.77 MH/s yes!
+[2018-05-07 23:25:52] accepted: 8/8 (diff 0.007), 13.77 MH/s yes!
+[2018-05-07 23:25:53] accepted: 9/9 (diff 0.012), 13.77 MH/s yes!
+[2018-05-07 23:25:54] accepted: 10/10 (diff 0.124), 13.77 MH/s yes!
+</code></pre>
+
+<hr />
+
+<h2 id="references">References</h2>
+
+<p><code>[3] Bitcoin Wiki - P2Pool https://en.bitcoin.it/wiki/P2Pool</code></p>
+
+
+    
+    </div>
+    </div>
+</main>
+  <footer></footer>
+
+
+  <script src="/js/kube.js" type="text/javascript">
+  </script>
+  <script src="/js/kube.legenda.js" type="text/javascript">
+  </script>
+  <script src="/js/master.js" type="text/javascript">
+  </script>
+</body>
+
+</html>

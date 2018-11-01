@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Academies on </title>
+    <link>/academy/</link>
+    <description>Recent content in Academies on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 04 May 2018 12:46:25 -0500</lastBuildDate>
+    
+	<atom:link href="/academy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Learning About Blockchain by Building Your Own</title>
+      <link>/academy/building-your-own-blockchain/</link>
+      <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
+      
+      <guid>/academy/building-your-own-blockchain/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>What is Blockchain?</title>
+      <link>/academy/what-is-blockchain/</link>
+      <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
+      
+      <guid>/academy/what-is-blockchain/</guid>
+      <description> The Bitcoin Whitepaper </description>
+    </item>
+    
+    <item>
+      <title>What is Money?</title>
+      <link>/academy/what-is-money/</link>
+      <pubDate>Fri, 04 May 2018 12:46:25 -0500</pubDate>
+      
+      <guid>/academy/what-is-money/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

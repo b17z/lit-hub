@@ -1,29 +1,28 @@
 baseURL = "/"
 languageCode = "en-us"
-title = "Vertcoin Academy"
+title = ""
 theme = "lit-hub"
 description = "Vertcoin: The People's Coin"
 Paginate = 4
 [Params]
-  RSSLink = "/index.xml"
-  author = "Vertcoin" 
+  author = "Vertcoin Documentation" 
   github = "vertcoin-project"
   twitter = "Vertcoin"
-  email = ""
+
 
 [[menu.main]]
+    name = "Home"
+    weight = 100
+    url = "/"
+[[menu.main]]
     name = "Main Site"
-    weight = -100
+    weight = 200
     url = "https://vertcoin.org"
 [[menu.main]]
     name = "Documentation"
-    weight = -200
+    weight = 300
     url = "/docs/"
 [[menu.main]]
 		name = "Vertcoin Academy"
-		weight = -300
-		url = ""
-[[menu.main]]
-    name = "Faq"
-    weight = -400
-    url = "/faq/"
+		weight = 400
+		url = "/academy/"

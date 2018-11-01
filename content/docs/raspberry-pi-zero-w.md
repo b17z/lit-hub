@@ -1,12 +1,14 @@
 +++
-title = "Full Node Setup: Raspberry Pi Zero W"
+title = "Full Node Setup: Rasperry Pi Zero W"
 description = "Up and Running on the Raspberry Pi Zero W"
 date = 2018-05-04T12:46:25-05:00
 weight = 10
 draft = false
-bref = "Full Guide in Setting Up a Full Node on the Raspberry Pi Zero"
+bref = "Guide in Setting Up a Full Node on the Raspberry Pi Zero W"
 toc = true
 +++
+
+### Raspberry Pi Zero W (Wireless) Vertcoin full node installation done using Windows
 
 <p align="center">
   <img src="https://i.imgur.com/eJyg30C.png" width="343" height="68" />
@@ -17,23 +19,23 @@ toc = true
 
 -----------------------------------
 
-#### Why a Vertcoin Full node?
+### Why a Vertcoin Full node?
 >Vertcoin is a digital currency supported by a peer-to-peer network. In order to run efficiently and effectively, it needs peers run by different people... and the more the better. [1]
 
 >This tutorial will describe how to create a Vertcoin “full node” (a Vertcoin server that contains the full blockchain and propagates transactions throughout the Vertcoin network via peers). This system will not mine for Vertcoins... it will play its part to keep the Vertcoin peer-to-peer network healthy and strong. For a detailed explanation for why it is important to have a healthy Vertcoin peer-to-peer network, read this [article](https://medium.com/@lopp/bitcoin-nodes-how-many-is-enough-9b8e8f6fd2cf) about Bitcoin full nodes. [2]
 
 `NOTE:` This will be a “headless” server... meaning we will not be using a GUI to configure Vertcoin or check to see how things are running. In fact, once the server is set up, you will only interact with it using command line calls over `SSH`. The idea is to have this full node be simple, low-power, with optimized memory usage and something that “just runs” in your basement, closet, etc.
 
-#### Why a Raspberry Pi Zero?
+### Why a Raspberry Pi Zero?
 >Raspberry Pi Zero is an inexpensive computing hardware platform that generates little heat, and draws less power than a regular Raspberry Pi, and can run silently 24 hours a day without having to think about it. [1]
 
-#### Raspberry Pi Zero W Specifications
+### Raspberry Pi Zero W Specifications
 * 1GHz, single-core CPU
 * 512MB RAM
 * 802.11 b/g/n wireless LAN
 * Bluetooth 4.1
 
-#### Power Consumption
+### Power Consumption
 |  Pi Model |                       Pi State                       | Power Consumption |
 |:---------:|:----------------------------------------------------:|:-----------------:|
 |     A+    | Idle, HDMI disabled, LED disabled, USB WiFi adapter  |    160 mA (0.8W   |
@@ -43,7 +45,7 @@ toc = true
 
 -----------------------------------
 
-#### Parts list  
+### Parts list  
 |                          Parts                         |    Price   |                                       Link                                       |
 |:------------------------------------------------------:|:----------:|:--------------------------------------------------------------------------------:|
 |            CanaKit Pi Zero W 8GB Starter Kit           | $29.99 USD |                   https://www.amazon.com/gp/product/B06XJQV162/                  |
@@ -56,7 +58,7 @@ The case in the parts list is a personal preference, it is your choice how you w
 
 -----------------------------------
 
-### Table of Contents
+#### Table of Contents
 1. Introduction
 2. Initial Setup of Raspberry Pi Zero W
 3. Create swap file space for Raspberry Pi 

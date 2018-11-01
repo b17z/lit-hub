@@ -8,23 +8,79 @@
   </url>
   
   <url>
-    <loc>/docs/setup-intel-nuc/</loc>
+    <loc>/docs/setup-nuc/</loc>
     <lastmod>2018-05-04T12:46:25-05:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/setup-raspberry-pi/</loc>
+    <loc>/docs/raspberry-pi/</loc>
     <lastmod>2018-05-04T12:46:25-05:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/setup-raspberry-pi-zero-w/</loc>
+    <loc>/docs/raspberry-pi-zero-w/</loc>
     <lastmod>2018-05-04T12:46:25-05:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/getting-started-full-nodes/</loc>
+    <loc>/docs/getting-started-with-full-nodes/</loc>
     <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/getting-started-with-mining/</loc>
+    <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/hardware-wallets/</loc>
+    <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/academy/building-your-own-blockchain/</loc>
+    <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/nvidia-mining-vertcoin/</loc>
+    <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/paper-wallets/</loc>
+    <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/core-wallet/</loc>
+    <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/wallet-overview/</loc>
+    <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/academy/what-is-blockchain/</loc>
+    <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/academy/what-is-money/</loc>
+    <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/p2pool-overview/</loc>
+    <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/academy/</loc>
+    <lastmod>2018-05-04T12:46:25-05:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -36,10 +92,6 @@
     <loc>/docs/</loc>
     <lastmod>2018-05-04T12:46:25-05:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/faq/</loc>
   </url>
   
   <url>

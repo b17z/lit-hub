@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta name="generator" content="Hugo 0.50" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> What is A Wallet? </title>
+
+  
+  <meta name="description" content="Wallet Overview"> 
+  
+  
+  
+  
+  
+
+  
+
+  <meta name="author" content="Vertcoin Documentation">
+
+
+  <meta property="og:title" content="What is A Wallet?" />
+<meta property="og:description" content="Wallet Overview" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/docs/wallet-overview/" /><meta property="article:published_time" content="2018-05-04T12:46:25-05:00"/>
+<meta property="article:modified_time" content="2018-05-04T12:46:25-05:00"/>
+
+  
+
+
+
+
+  
+  
+  
+  
+  
+
+  <link rel="canonical" href="/docs/wallet-overview/">  
+
+  <link rel="shortcut icon" type="image/png" href="">
+
+
+  <link href="/css/font.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.min.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.legenda.css" rel="stylesheet" type="text/css">
+  <link href="/css/highlight.css" rel="stylesheet" type="text/css">
+  <link href="/css/master.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.demo.css" rel="stylesheet" type="text/css">
+
+ <link href="/css/custom.css" rel="stylesheet" type="text/css">
+
+  <script src="/js/jquery-2.1.4.min.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript" src="/js/tocbot.min.js"></script>
+</head>
+
+
+<body class="page-kube">
+  <header> <div class="show-sm">
+    <div id="nav-toggle-box">
+      <div id="nav-toggle-brand">
+        <a href="/"></a>
+      </div><a data-component="toggleme" data-target="#top" href="#" id="nav-toggle"><i class="kube-menu"></i></a>
+    </div>
+  </div>
+  <div class="hide-sm" id="top">
+    <div id="top-brand">
+      <a href="/" title="home"></a>
+    </div>
+    <nav id="top-nav-main">
+      <ul>
+       
+       
+    <li><a href="/" >Home</a></li>
+    
+    <li><a href="https://vertcoin.org" >Main Site</a></li>
+    
+    <li><a href="/docs/" >Documentation</a></li>
+    
+    <li><a href="/academy/" >Vertcoin Academy</a></li>
+    
+      </ul>
+    </nav>
+    <nav id="top-nav-extra"> 
+      <ul>
+          
+      </ul>
+    </nav>
+  </div>
+ </header>
+  <main>
+  <div id="main">
+    <div id="hero">
+      <h1> What is A Wallet? </h1>
+      <p class="hero-lead">
+           Securing Your Funds.
+      </p>
+
+    </div> 
+    <div id="kube-component" class="content">
+    
+<nav id="contents">
+    <ol class="js-toc">
+    </ol>
+</nav>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded",
+function(){
+tocbot.init({
+
+tocSelector: '.js-toc',
+
+contentSelector: '.content',
+
+headingSelector: 'h3'
+})
+}
+);
+</script>
+
+
+
+    
+
+<h3 id="wallet-overview">Wallet Overview</h3>
+
+<p>A Wallet is an address or a collections of addresses and corresponding private keys that allow you to recieve, store, and send Vertcoin. There are many types of wallets, each with different purposes and limitations.</p>
+
+<table>
+<thead>
+<tr>
+<th>Wallet</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="./Core-Wallet/">Core Wallet</a></td>
+<td>A reference implementation of the vertcoin protocol that includes a wallet. Downloads the entire blockchain, recommended for miners. Known as a full client, or full node. <code>[1]</code></td>
+</tr>
+
+<tr>
+<td><a href="./Electrum/">Electrum Wallet</a></td>
+<td>A lightweight client, also known as a simple-payment-verification (SPV) client, connects to vertcoin full nodes for access to the vertcoin transaction information, but stores the user wallet locally and independently creates, validates, and transmits transactions. Does not require downloading the blockchain. <code>[1]</code></td>
+</tr>
+
+<tr>
+<td><a href="./Vertwallet/">Vertwallet</a></td>
+<td>A mobile wallet is one of the most common types of wallet. Running on smart-phone operating systems such as <a href="https://itunes.apple.com/us/app/coinomi-wallet/id1333588809?mt=8">Apple iOS</a> and <a href="https://play.google.com/store/apps/details?id=com.coinomi.wallet">Android</a>, these wallets are often a great choice for new users.</td>
+</tr>
+
+<tr>
+<td><a href="./Paper-Wallets/">Paper Wallets</a></td>
+<td>The keys controlling vertcoin can also be printed for long-term storage. These are known as paper wallets even though other materials (wood, metal, etc.) can be used. Paper wallets offer a low-tech but highly secure means of storing vertcoin long term. Offline storage is also often referred to as cold storage. <code>[1]</code></td>
+</tr>
+
+<tr>
+<td><a href="./Hardware-Wallets/">Hardware Wallets</a></td>
+<td>Hardware wallets are devices that operate a secure self-contained bitcoin wallet on special-purpose hardware. They are operated via USB with a desktop web browser or via near-field-communication (NFC) on a mobile device. By handling all vertcoin-related operations on the specialized hardware, these wallets are considered very secure and suitable for storing large amounts of vertcoin, bitcoin, litecoin, etc. <code>[1]</code></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h3 id="what-is-a-wallet">What is a wallet?</h3>
+
+<p>Similar to a traditional wallet you may carry in your pocket, a vertcoin wallet is used to store money. The difference is that instead of storing a collection of bills and cards, a vertcoin wallet stores a collection of vertcoin private keys. Typically a wallet is encrypted with a password or otherwise protected from unauthorized access.</p>
+
+<p>Unlike the Vertcoin network, a Vertcoin wallet is controlled only by its owner. It&rsquo;s important to keep your vertcoin wallet safe by either setting a strong password or otherwise keeping it out of reach of malicious individuals.</p>
+
+<h3 id="types-of-wallets">Types of Wallets</h3>
+
+<p>There are different wallets to choose from, each providing different features. All vertcoin wallets must conform to the established Vertcoin protocol so they can all be used to send and receive funds regardless of their specific implementation. This is similar to email where you have many choices of email providers but they all &ldquo;speak the same language&rdquo; and are able to send messages to each other.</p>
+
+<p>There are several categories of Vertcoin wallets:</p>
+
+<h4 id="desktop-wallets">Desktop Wallets</h4>
+
+<p>You can install the wallet software directly on your computer. This allows an individual to have full control (and responsibility) over their wallet.</p>
+
+<p><a href="https://vertcoin.org/download/">Vertcoin Core</a> was the first type of vertcoin wallet created as a reference implementation and many users run desktop wallets for the features, autonomy, and control they offer. Running on general-use operating systems such as Windows and Mac OS has certain security disadvantages however, as these platforms are often insecure and poorly configured. <code>[1]</code></p>
+
+<p>The private keys are stored on the hard drive. If the wallet file were to become corrupted with no backup available, the vertcoins stored in that wallet would be lost forever. For this reason it&rsquo;s extremely important that strong passwords are used and reliable backups are made of any desktop wallet. It&rsquo;s equally important that the wallet and backups are kept safely out of reach of malicious individuals.</p>
+
+<p>Desktop wallets fall into two main categories known as &ldquo;full nodes&rdquo; or &ldquo;light&rdquo; clients. Full nodes host a full copy of the blockchain (about 4 GB as of May 2018) while light clients only provide the ability to transact with vertcoin while depending on an external source to read the blockchain. More examples of wallets can be found <a href="https://vertcoin.org/download/">here</a>.</p>
+
+<h4 id="mobile-wallets">Mobile Wallets</h4>
+
+<p>Mobile wallets are simply vertcoin wallets designed for a mobile device. This means they can easily scan QR codes, are easy to navigate with a touch screen, and are accessible while on the move. The Coinomi mobile wallet for <a href="https://itunes.apple.com/us/app/coinomi-wallet/id1333588809">iOS</a> and <a href="https://play.google.com/store/apps/details?id=com.coinomi.wallet">Android</a> allows you access to send and receive Vertcoin.</p>
+
+<p>Mobile wallets are almost always &ldquo;light&rdquo; clients in that they do not store a full copy of the blockchain.</p>
+
+<h4 id="hardware-wallet">Hardware Wallet</h4>
+
+<p>A hardware wallet is a specialized type of device designed specifically to store cryptocurrency. The advantage is that hardware wallets are much more difficult for a malicious user to compromise when compared to a desktop or mobile wallet since they use the bare minimum amount of software required to safely store vertcoins.</p>
+
+<h4 id="paper-wallets">Paper Wallets</h4>
+
+<p>Paper wallets are a way to embody vertcoins in a physical medium such as paper or metal. If a paper wallet is lost or destroyed, the vertcoin stored on it are gone forever.</p>
+
+<h4 id="references">References</h4>
+
+<p><code>[1] Mastering Bitcoin 2nd Edition - Choosing a Bitcoin Wallet - https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch01.asciidoc#choosing-a-bitcoin-wallet</code></p>
+
+
+    
+    </div>
+    </div>
+</main>
+  <footer></footer>
+
+
+  <script src="/js/kube.js" type="text/javascript">
+  </script>
+  <script src="/js/kube.legenda.js" type="text/javascript">
+  </script>
+  <script src="/js/master.js" type="text/javascript">
+  </script>
+</body>
+
+</html>

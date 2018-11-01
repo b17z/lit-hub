@@ -4,9 +4,11 @@ description = "Up and Running on the Intel NUC"
 date = 2018-05-04T12:46:25-05:00
 weight = 10
 draft = false
-bref = "Full Guide in Setting Up a Full Node on the Intel NUC"
+bref = "Guide in Setting Up a Full Node on the Intel NUC"
 toc = true
 +++
+
+### Intel NUC Vertcoin full node installation done using Windows
 
 <p align="center">
   <img src="https://i.imgur.com/eJyg30C.png" width="343" height="68" />
@@ -65,22 +67,6 @@ The Intel NUC was chosen for this guide because of it's entry level hardware, an
 -----------------------------------
 
 ### Linux Headless (Ubuntu 16.04 Server recommended)
-
-#### Table of Contents
-1. Introduction
-2. Download and install Ubuntu Server 16.04
-3. Intial setup of Ubuntu Server 16.04
-4. Download and install `vertcoind`  
-   `*OPTIONAL` Download latest `vertcoind` release  
-   (Recommended) Download latest `vertcoind` source and build   
-5. Transfer Vertcoin blockchain to NUC 
-6. Configure Vertcoin Core to auto-start on reboot 
-7. Configure firewall to allow Vertcoin Core traffic
-8. Congratulations! Thanks for doing your part and running a Vertcoin full node <3  
-`*OPTIONAL` Setup P2Pool node with `p2pool-vtc`   
-`*OPTIONAL` Setup Unitus full node for merged mining with `p2pool-vtc`  
-
------------------------------------
 
 ### 1.) Introduction
 This section of the **Intel NUC Vertcoin full node installation guide** will walk through the steps of setting up your own Vertcoin full node, allowing for the addition of a P2Pool node with Unitus merged mining capability using a headless **Ubuntu Server 16.04 LTS** Linux distribution. Ubuntu Server 16.04 was chosen because of it's ease of use and setup for Vertcoin full nodes. You may use whatever distribution suits you but please note the commands for this walk through may not apply to your distribution. 
@@ -191,6 +177,7 @@ Fail2ban Documentation: https://www.digitalocean.com/community/tutorials/how-fai
 ```
 
 -----------------------------------
+
 ### 4.) Download and install `vertcoind`
 
 #### `*OPTIONAL` Download latest Vertcoin Core release 
@@ -200,568 +187,22 @@ Fail2ban Documentation: https://www.digitalocean.com/community/tutorials/how-fai
 Instructions to download and install the latest Vertcoin Core binaries are provided, **however it is recommended to build from source for any security minded user**. **Skip this section if you wish to compile Vertcoin Core from source**. 
 
 \# Download latest Vertcoin Core release
+
 ```
 nuc@nuc:~$ wget https://github.com/vertcoin-project/vertcoin-core/releases/download/0.13.1/vertcoind-v0.13.1-linux-amd64.zip
 nuc@nuc:~$ unzip vertcoind-v0.13.1-linux-amd64.zip
 nuc@nuc:~$ chmod +x vertcoind vertcoin-cli vertcoin-tx
 nuc@nuc:~$ sudo mv vertcoind vertcoin-cli vertcoin-tx /usr/bin/
+```
 
-# Clean up
+\# Clean up
+```
 nuc@nuc:~$ rm vertcoind-v0.13.1-linux-amd64.zip
 ```
 
 -----------------------------------
 
 #### Build `vertcoind` (Recommended)
-
-**If you downloaded and installed the latest release of Vertcoin Core in the `*OPTIONAL` step above, you may skip this section where Vertcoin Core is built from source**. 
-
-\# Install `bitcoin` dependencies 
-```
-Bitcoin Unix Build Notes: https://github.com/bitcoin/bitcoin/blob/master/doc/build-unix.md
-```  
-`nuc@nuc:~$ sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils python3 -y`  
-
-\# Install Boost library packages
-```
-nuc@nuc:~/vertcoin-core$  sudo apt-get install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev
-```
-
-\# Clone `vertcoin-core`   
-```
-nuc@nuc:~$ git clone https://github.com/vertcoin-project/vertcoin-core.git
-Cloning into 'vertcoin-core'...
-remote: Counting objects: 107501, done.
-remote: Compressing objects: 100% (24/24), done.
-remote: Total 107501 (delta 5), reused 11 (delta 2), pack-reused 107475
-Receiving objects: 100% (107501/107501), 46.65 MiB | 14.33 MiB/s, done.
-Resolving deltas: 100% (83879/83879), done.
-Checking connectivity... done.
-```
-
-\# Change directories to `vertcoin-core`  
-```
-nuc@nuc:~$ ls
-vertcoin-core
-nuc@nuc:~$ cd vertcoin-core/
-nuc@nuc:~/vertcoin-core$
-```
-
-\# Install db4.8 packages 
-```
-nuc@nuc:~/vertcoin-core$ sudo apt-get install software-properties-common
-nuc@nuc:~/vertcoin-core$ sudo add-apt-repository ppa:bitcoin/bitcoin
-nuc@nuc:~/vertcoin-core$ sudo apt-get update
-nuc@nuc:~/vertcoin-core$ sudo apt-get install libdb4.8-dev libdb4.8++-dev
-```
-
-#### Memory Requirements
-C++ compilers are memory-hungry. It is recommended to have at least 1.5 GB of memory available when compiling Bitcoin Core. On systems with less, gcc can be tuned to conserve memory with additional CXXFLAGS:
-
-`NOTE:` The Intel NUC used in this guide has 4-8GB of RAM, if you have less than 1.5GB of RAM configure with the flags specified below.
-```
-./configure CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768"
-```
-
-#### Building the Vertcoin Core daemon
-`nuc@nuc:~/vertcoin-core$ ./autogen.sh`  
-`nuc@nuc:~/vertcoin-core$ ./configure`  
-```
-Options used to compile and link:
-  with wallet   = yes
-  with gui / qt = no
-  with sse2     = no
-  with zmq      = no
-  with test     = yes
-  with bench    = yes
-  with upnp     = auto
-  use asm       = yes
-  debug enabled = no
-  werror        = no
-
-  target os     = linux
-  build os      =
-
-  CC            = gcc
-  CFLAGS        = -g -O2 -fPIC
-  CPPFLAGS      =  -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS
-  CXX           = g++ -std=c++11
-  CXXFLAGS      = -g -O2 -Wall -Wextra -Wformat -Wvla -Wformat-security -Wno-unused-parameter
-  LDFLAGS       =
-  ARFLAGS       = cr
-```
-```
-# compiling vertcoin core will take some time 
-nuc@nuc:~/vertcoin-core$ make
-```
-```
-Making all in src
-make[1]: Entering directory '/home/nuc/vertcoin-core/src'
-make[2]: Entering directory '/home/nuc/vertcoin-core/src'
-(...)
-make[2]: Leaving directory '/home/nuc/vertcoin-core/src'
-make[1]: Leaving directory '/home/nuc/vertcoin-core/src'
-Making all in doc/man
-make[1]: Entering directory '/home/nuc/vertcoin-core/doc/man'
-make[1]: Nothing to be done for 'all'.
-make[1]: Leaving directory '/home/nuc/vertcoin-core/doc/man'
-make[1]: Entering directory '/home/nuc/vertcoin-core'
-make[1]: Nothing to be done for 'all-am'.
-make[1]: Leaving directory '/home/nuc/vertcoin-core'
-nuc@nuc:~/vertcoin-core$
-```
-\# Install the freshly built Vertcoin binaries  
-`nuc@nuc:~/vertcoin-core$ sudo make install`
-
-\# Change directories back to home `~/`  
-`nuc@nuc:~/vertcoin-core$ cd`
-
-\# Clean up   
-`nuc@nuc:~$ sudo rm -r vertcoin-core/`  
-
-\# Create the Vertcoin data directory  
-```
-nuc@nuc:~$ mkdir .vertcoin
-nuc@nuc:~$ cd .vertcoin/
-nuc@nuc:~/.vertcoin$
-```
-#### Configure `vertcoin.conf`
-
-\# Create `vertcoin.conf`   
-`nuc@nuc:~/.vertcoin$ nano vertcoin.conf`
-```
-server=1
-rpcuser=vertnode
-rpcpassword=yoursecurepasswordgoeshere
-
-# makes client run in background
-daemon=1
-
-# cap maxconnections ; 40 is default
-maxconnections=40
-
-# maxuploadtarget in MB
-maxuploadtarget=5000
-```
-
-\# Change directories back to home `~/`  
-`nuc@nuc:~/.vertcoin$ cd`
-
------------------------------------
-
-### 5.) Transfer Vertcoin blockchain to NUC   
-
-**`*OPTIONAL` If you wish to instead sync `vertcoind` with the `bootstrap.dat` file provided by the Vertcoin developers, follow the instructions below and skip the process involving WinSCP.** 
-```
-nuc@nuc:~$ cd .vertcoin/
-nuc@nuc:~/.vertcoin$ wget "http://alwayshashing.com/downloads/bootstrap.dat"
---2018-05-20 17:34:23--  http://alwayshashing.com/downloads/bootstrap.dat
-Resolving alwayshashing.com (alwayshashing.com)... 198.20.67.78
-Connecting to alwayshashing.com (alwayshashing.com)|198.20.67.78|:80... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 1778068656 (1.7G)
-Saving to: ‘bootstrap.dat’
-
-bootstrap.dat                       7%[===>                                                        ] 124.08M  21.2MB/s    eta 2m 19s
-
-# When bootstrap.dat is finished downloading please move on to step 6
-```
------------------------------------
->WinSCP (Windows Secure Copy) is a free and open-source SFTP, FTP, WebDAV, Amazon S3 and SCP client for Microsoft Windows. Its main function is secure file transfer between a local and a remote computer. Beyond this, WinSCP offers basic file manager and file synchronization functionality. For secure transfers, it uses Secure Shell (SSH) and supports the SCP protocol in addition to SFTP.
-
-Download and install `WinSCP:` `https://winscp.net/eng/download.php`
-
-When `Vertcoin Core` is finished syncing to the blockchain, exit `Vertcoin Core` so that it safely shuts down ensuring no data is corrupted. 
-
-Proceed by running `WinSCP`, you will be met with a `Login` prompt asking for a Host name, Port number, User name and Password. Login to your mining rig like so, please note that your miner's `IP` address may be different than what is listed below.
-```
-File protocol: SFTP
-Host name: 192.168.1.5
-Port number: 22
-User name: nuc
-Password: yourpasswordhere
-```
-![Login](https://i.imgur.com/uyTGKdY.png)  
-![Connection](https://i.imgur.com/SlDMCmN.png)  
-
-Ensure `Optimize connection buffer size` is unchecked for an easy tansfer.
-
-`Default Windows Directory (Vertcoin): C:\Users\%USER%\AppData\Roaming\Vertcoin`  
-
-While logged into your mining rig, copy the folders `blocks` and `chainstate` to the `/home/nuc/.vertcoin` folder. This will allow us to side-load the Vertcoin blockchain and bootstrap faster than if we had the `vertcoind` daemon do all the work. 
-
-#### Exit the Vertcoin Core wallet before transferring data to prevent corrupted blockchain
-
-![EnterDir](https://i.imgur.com/p90i1D3.png)
-![EnterPath](https://i.imgur.com/5Cf0WpX.png)
-![CopyPaste](https://i.imgur.com/ujFyzT4.png)
-![Transfer](https://i.imgur.com/EW4i4bZ.png)
-
-Once the blockchain files have finished copying to your Intel NUC, move back over to your `SSH` session with your NUC...
-
------------------------------------
-
-### 6.) Configure Vertcoin Core to auto-start on reboot 
-
-\# Configure crontab file to start vertcoind hourly and on reboot  
-`nuc@nuc:~/.vertcoin$ crontab -u nuc -e`  
-```
-Select an editor.  To change later, run 'select-editor'.
-  1. /bin/ed
-  2. /bin/nano        <---- easiest
-  3. /usr/bin/vim.tiny
-
-Choose 1-3 [2]: 2
-----------------------------------------------------------------------
-# Edit this file to introduce tasks to be run by cron.
-#
-# Each task to run has to be defined through a single line
-# indicating with different fields when the task will be run
-# and what command to run for the task
-#
-# To define the time you can provide concrete values for
-# minute (m), hour (h), day of month (dom), month (mon),
-# and day of week (dow) or use '*' in these fields (for 'any').#
-# Notice that tasks will be started based on the cron's system
-# daemon's notion of time and timezones.
-#
-# Output of the crontab jobs (including errors) is sent through
-# email to the user the crontab file belongs to (unless redirected).
-#
-# For example, you can run a backup of all your user accounts
-# at 5 a.m every week with:
-# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
-#
-# For more information see the manual pages of crontab(5) and cron(8)
-#
-# m h  dom mon dow   command
-
-@reboot vertcoind
-```
-
-\# `NOTE:` Make sure the blockchain has fully transferred to `/home/nuc/.vertcoin` before starting vertcoind
-
-\# Start the vertcoin daemon and begin blockchain sync
-```
-nuc@nuc:~$ vertcoind &
-[1] 19492
-nuc@nuc:~$ Vertcoin server starting
-
-[1]+  Done                    vertcoind
-nuc@nuc:~$ tail -f .vertcoin/debug.log
-2018-05-19 02:34:36 Verifying checkpoint at height 516999
-2018-05-19 02:34:36 Checking PoW for block 850000
-2018-05-19 02:34:36 Checking PoW for block 920000
-2018-05-19 02:34:36 Verifying checkpoint at height 347269
-2018-05-19 02:34:36 Checking PoW for block 880000
-2018-05-19 02:34:36 Checking PoW for block 900000
-2018-05-19 02:34:38 Checking PoW for block 640000
-2018-05-19 02:34:38 Checking PoW for block 680000
-2018-05-19 02:34:39 Checking PoW for block 930000
-2018-05-19 02:34:40 Verifying checkpoint at height 228023
-2018-05-19 02:34:44 Checking PoW for block 790000
-2018-05-19 02:34:44 Checking PoW for block 830000
-...
-```
-
-#### Quick note about blockchain syncing
-```
-Vertcoin Core is now synchronizing to the side-loaded blockchain located in `/home/nuc/.vertcoin/`. 
-This process can take up to an hour to sync headers and verify all of the downloaded blocks. 
-Vertcoin 0.13.1 has made major improvements to loading time of the blockchain and loads in 2 minutes.
-
-You can monitor system resources by issuing the htop command and check up on 
-vertcoind by issuing the following commands: 
-# Display output of Vertcoin debug.log; ctrl+c to stop  
-nuc@nuc:~ $ tailf .vertcoin/debug.log
-
-# Show blockchain information  
-nuc@nuc:~ $ vertcoin-cli getblockchaininfo
-
-# Show current block  
-nuc@nuc:~ $ vertcoin-cli getblockcount  
-```
-You may continue on while `vertcoind` catches up to the blockchain ...
-
------------------------------------
-
-### 7.) Configure firewall to allow Vertcoin Core traffic
-Please note that your IP range may be different than what I have listed below. If your router IP address is 192.168.1.1 then the instructions above require no alterations. If your IP address is something like 192.168.56.1 or 10.0.0.1 then you will need to modify the 'ufw allow from 192.168.1.0/24 to any port 22' to 'ufw allow from 192.168.56.0/24(...)' or 'ufw allow from 10.0.0.0/24(...)' respectively.
-
-\# Escalate to `root` and configure `UFW`  
-`nuc@nuc:~$ sudo su`  
-```
-root@nuc:/home/nuc# ufw default deny incoming
-Default incoming policy changed to 'deny'
-(be sure to update your rules accordingly)
-```
-
-`root@nuc:/home/nuc# ufw default allow outgoing`  
-```
-Default outgoing policy changed to 'allow'
-(be sure to update your rules accordingly)
-```
-
-`root@nuc:/home/nuc# ufw allow from 192.168.1.0/24 to any port 22 comment 'allow SSH from local LAN'`  
-`root@nuc:/home/nuc# ufw allow 5889 comment 'allow vertcoin core'`  
-
-`root@nuc:/home/nuc# ufw enable`  
-```
-Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
-Firewall is active and enabled on system startup
-```
-
-
-`root@nuc:/home/nuc# systemctl enable ufw`  
-```
-Synchronizing state of ufw.service with SysV init with /lib/systemd/systemd-sysv-install...
-Executing /lib/systemd/systemd-sysv-install enable ufw
-```
-
-`root@nuc:/home/nuc# ufw status`  
-```
-Status: active
-
-To                         Action      From
---                         ------      ----
-22                         ALLOW       192.168.1.0/24             # allow SSH from local LAN
-5889                       ALLOW       Anywhere                   # allow vertcoin core
-5889 (v6)                  ALLOW       Anywhere (v6)              # allow vertcoin core
-```
-
-\# Give up `root`  
-```
-root@nuc:/home/nuc# exit
-exit
-nuc@nuc:~$
-```
-
-Open a browser window and navigate to your router page, from there you can port forward your NUC.
-`TCP/UDP Port: 5889`
-
-##### This will make your node public, supporting the health of the Vertcoin network by keeping it decentralized and populated with one more node.
-
------------------------------------
-
-### 8. Congratulations! Thanks for doing your part and running a Vertcoin full node <3
-
-You have successfully setup a full Vertcoin Core node on your Intel NUC or alternate hardware. Thank you for following along and contributing to the Vertcoin network by helping keep it populated with nodes and distributed. You help give meaning to the people's coin!
-```
-nuc@nuc:~$ vertcoin-cli getblockchaininfo
-{
-  "chain": "main",
-  "blocks": 919881,
-  "headers": 919881,
-  "bestblockhash": "846ae520eebe3ecfc33c0bc427ab1414e9f45010623e00f9a7e24697d5a3fa12",
-  "difficulty": 39708.0468186609,
-  "mediantime": 1525044381,
-  "verificationprogress": 0.9999867830498936,
-  "initialblockdownload": false,
-  "chainwork": "000000000000000000000000000000000000000000000001b087526cfafa4e4a",
-  "size_on_disk": 3459943082,
-  "pruned": false,
-  "bip9_softforks": {
-    "csv": {
-      "status": "active",
-      "startTime": 1488326400,
-      "timeout": 1519862400,
-      "since": 691488
-    },
-    "segwit": {
-      "status": "active",
-      "startTime": 1488326400,
-      "timeout": 1519862400,
-      "since": 713664
-    },
-    "nversionbips": {
-      "status": "active",
-      "startTime": 1488326400,
-      "timeout": 1519862400,
-      "since": 691488
-    }
-  },
-  "warnings": ""
-}
-nuc@nuc:~$ vertcoin-cli getconnectioncount
-8
-```
-
-`NOTE` System load @ idle running `vertcoind` full node
-<p align="left">
-  <img src="https://i.imgur.com/PrSWiBe.png" />
-</p>
-
------------------------------------
-
-### `*OPTIONAL` Setup P2Pool node with `p2pool-vtc`  
-
->P2Pool is a decentralized Bitcoin mining pool that works by creating a peer-to-peer network of miner nodes.
-
->P2Pool creates a new block chain in which the difficulty is adjusted so a new block is found every 30 seconds. The blocks that get into the P2Pool block chain (called the "share chain") are the same blocks that would get into the Bitcoin block chain, only they have a lower difficulty target. Whenever a peer announces a new share found (new block in the P2Pool block chain), it is received by the other peers, and the other peers verify that this block contains payouts for all the previous miners who found a share (and announced it) that made it into the P2Pool share chain. This continues until some peer finds a block that has a difficulty that meets the Bitcoin network's difficulty target. This peer announces this block to the Bitcoin network and miners who have submitted shares for this block are paid in the generation transaction, proportionally to how many shares they have found in the last while. - Unknown author [3]
->
-> Decentralized payout pooling solves the problem of centralized mining pools degrading the decentralization of Bitcoin and avoids the risk of hard to detect theft by pool operators.
->
-> Miners are configured to connect to a P2Pool node that can be run locally, alongside the miner. P2Pool users must run a full Bitcoin node which serves the purpose of independently validating transactions and the Bitcoin blockchain.
->
-> P2Pool nodes work on a chain of shares similar to Bitcoin's blockchain. Each node works on a block that includes payouts to the previous shares' owners and the node itself, which can also result in a share if it meets P2Pool's difficulty. 
-
-\# Reasons to use P2Pool as your mining pool `[4]`
-
-    1. You are in charge
-    2. No single point of failure in the pool
-    3. It's fun for geeks to learn
-    4. There are small statistical advantages increasing income vs traditional pools
-
-
-\# Reasons to avoid P2Pool `[4]`
-
-    1. You need to maintain your own node (expect some sysadmin work)
-    2. Some hardware simply can't perform well on P2Pool
-    3. You have to provide the CPU/RAM/Disk/Net capacity P2Pool needs
-
-\# P2pool's advantages for miners looking for better incomes `[4]`
-```
-Fees are optional and transactions are paid to miners. On average, if your miners 
-have latencies comparable to the other miners on P2Pool, you should have more 
-income on P2Pool than on any other pool. In fact you should expect as much 
-(or more, see point below) income as you would have solo mining with reduced 
-variance thanks to other P2Pool miners contributing their own hashrate.
-
-P2Pool blocks are quickly broadcasted to the Vertcoin network through all the 
-vertcoind nodes used by the whole P2Pool network. If another pool finds a block 
-at the same time than P2Pool, it probably is at a disadvantage: that's more income 
-for P2Pool on average.
-```
-\# Security `[4]`
-```
-Don't use the node's wallet, always configure p2pool to pay an address 
-(use the "-a" parameter) you can secure appropriately. Big fat wallets on a public 
-server are not a good idea.
-```
-
------------------------------------------
-
-\# Install `p2pool-vtc` dependencies and `python-pip` 
-
-`nuc@nuc:~ $ sudo apt-get install python-rrdtool python-pygame python-scipy python-twisted python-twisted-web python-imaging python-pip -y`  
-
-\# Install `bitcoin` dependencies and `libffi-dev` 
-
-`nuc@nuc:~ $ sudo apt-get install build-essential libtool autotools-dev automake pkg-config libffi-dev libssl-dev libevent-dev bsdmainutils python3 -y`
-
-\# Grab latest `p2pool-vtc` release  
-```
-nuc@nuc:~ $ wget "https://github.com/vertcoin-project/p2pool-vtc/archive/v0.3.0-rc1.zip"  
-```
-\# Unzip `p2pool-vtc` release
-`nuc@nuc:~ $ unzip v0.3.0-rc1.zip`  
-
-\# Change directory to `p2pool-vtc-0.3.0-rc1`  
-```nuc@nuc:~ $ cd p2pool-vtc-0.3.0-rc1/```
-
-\# Install `requirements.txt` dependencies  
-`nuc@nuc:~/p2pool-vtc-0.3.0-rc1 $ pip install -r requirements.txt`   
-
-```Collecting Twisted>=12.2.0 (from -r requirements.txt (line 1))
-  Downloading https://files.pythonhosted.org/packages/12/2a/e9e4fb2e6b2f7a75577e0614926819a472934b0b85f205ba5d5d2add54d0/Twisted-18.4.0.tar.bz2 (3.0MB)
-    100% |████████████████████████████████| 3.0MB 98kB/s 
-Collecting argparse>=1.2.1 (from -r requirements.txt (line 2))
-  Downloading https://files.pythonhosted.org/packages/f2/94/3af39d34be01a24a6e65433d19e107099374224905f1e0cc6bbe1fd22a2f/argparse-1.4.0-py2.py3-none-any.whl
-Collecting pyOpenSSL>=0.13 (from -r requirements.txt (line 3))
-  Downloading https://files.pythonhosted.org/packages/79/db/7c0cfe4aa8341a5fab4638952520d8db6ab85ff84505e12c00ea311c3516/pyOpenSSL-17.5.0-py2.py3-none-any.whl (53kB)
-    100% |████████████████████████████████| 61kB 2.2MB/s 
-Collecting Automat>=0.3.0 (from Twisted>=12.2.0->-r requirements.txt (line 1))
-  Downloading https://files.pythonhosted.org/packages/17/6a/1baf488c2015ecafda48c03ca984cf0c48c254622668eb1732dbe2eae118/Automat-0.6.0-py2.py3-none-any.whl```
-
-\# Install P2Pool   
-`nuc@nuc:~/p2pool-vtc-0.3.0-rc1 $ sudo python setup.py install`  
-
-\# Download alternate  web frontend for P2Pool  
-`nuc@nuc:~/p2pool-vtc-0.3.0-rc1 $ cd`  
-`nuc@nuc:~ $ git clone https://github.com/hardcpp/P2PoolExtendedFrontEnd.git`  
-`nuc@nuc:~ $ cd P2PoolExtendedFrontEnd`  
-
-\# Move all files in `P2PoolExtendedFrontEnd` to the `web-static` folder in `p2pool-vtc`  
-`nuc@nuc:~/P2PoolExtendedFrontEnd $ mv * /home/pi/p2pool-vtc-0.3.0-rc1/web-static/`  
-`nuc@nuc:~/P2PoolExtendedFrontEnd $ cd`  
-
-\# Clean up  
-`nuc@nuc:~ $ sudo rm -r P2PoolExtendedFrontEnd/`
-
-#### Network 1 - Firewall Configuration  
-If you are a larger miner with multiple cards and/or a hash rate larger than 100Mh, it is recommended to use Network 1.
-
-\# Escalate to `root`  
-`nuc@nuc:~ $ sudo su`  
-`root@nuc:/home/nuc# ufw allow 9346 comment 'allow --network 1 p2p port'`  
-`root@nuc:/home/nuc# ufw allow 9171 comment 'allow --network 1 mining port'`  
-
-#### Network 2 - Firewall Configuration  
-If you are a smaller miner with 2 graphics cards or less or are using your CPU, it is recommended to use Network 2.
-
-\# Escalate to `root`  
-`nuc@nuc:~ $ sudo su`  
-`root@nuc:/home/nuc# ufw allow 9347 comment 'allow --network 2 p2p port'`  
-`root@nuc:/home/nuc# ufw allow 9181 comment 'allow --network 2 mining port'`  
-
-\# **Open Unitus port if you intend on merge mining**  
-`root@nuc:/home/nuc# ufw allow 50603 comment 'allow unitus core'` 
-
-\# Give up `root`  
-`root@nuc:/home/nuc# ufw enable`  
-`root@nuc:/home/nuc# exit`  
-`nuc@nuc:~$ sudo ufw status`  
-```Status: active
-
-To                         Action      From
---                         ------      ----
-22                         ALLOW       192.168.1.0/24             # allow SSH from local LAN
-5889                       ALLOW       Anywhere                   # allow vertcoin core
-9347                       ALLOW       Anywhere                   # allow --network 2 p2p port
-9181                       ALLOW       Anywhere                   # allow --network 2 mining port
-50x603                      ALLOW       Anywhere                   # allow unitus core
-5889 (v6)                  ALLOW       Anywhere (v6)              # allow vertcoin core
-9347 (v6)                  ALLOW       Anywhere (v6)              # allow --network 2 p2p port
-9181 (v6)                  ALLOW       Anywhere (v6)              # allow --network 2 mining port
-50603 (v6)                 ALLOW       Anywhere (v6)              # allow unitus core```
-
------------------------------------
-
-### `*OPTIONAL` Setup Unitus full node for merged mining with `p2pool-vtc` 
-
-A `Unitus` full node may be setup to allow for merged mining rewards when mining with `p2pool-vtc`. Running two full nodes together on the same Intel NUC will mean that you will be storing two blockchains on your storage drive rather than one, and you will be using more resources on load and at idle. 
-
-Before you get started consider downloading and installing the latest stable release of [Unitus Core](https://github.com/unitusdev/unitus/releases) wallet onto a computer you use that is not your Intel NUC. This step is `*OPTIONAL` but recommended. Doing so will speed up the process of syncing `unitusd` later. 
-
-This copy of the blockchain that is syncing to side-load onto our Intel NUC later.
-
-`Unitus Core Download Link: https://github.com/unitusdev/unitus/releases`  
-`Default Windows Directory (Unitus): C:\Users\%USER%\AppData\Roaming\Unitus`  
-
-We will use this copy of the blockchain that is syncing to side-load onto our NUC later.
-
------------------------------------
-
-#### `*OPTIONAL` Download latest Unitus Core release 
-
->There are security implications to downloading and running pre-compiled binaries. This provides a great convenience allowing the end user to run an application without requiring the dependencies to build from source. 
-
-Instructions to download and install the latest Unitus Core binaries are provided, **however it is recommended to build from source for any security minded user**. **Skip this section if you wish to compile Unitus Core from source**. 
-
-\# Download latest Unitus Core release
-```
-nuc@nuc:~$ wget https://github.com/unitusdev/unitus/releases/download/0.14.2.2/unitus-0.14.2.2-amd64.tar.xz
-nuc@nuc:~$ tar -xf unitus-0.14.2.2-amd64.tar.xz
-nuc@nuc:~$ chmod +x unitusd unitus-cli unitus-tx
-nuc@nuc:~$ sudo mv unitusd unitus-cli unitus-tx /usr/bin/
-
-# Clean up
-nuc@nuc:~$  rm -r unitus*
-```
-
------------------------------------
-
-#### Build `unitusd` (Recommended)
 
 **If you downloaded and installed the latest release of Vertcoin Core in the `*OPTIONAL` step above, you may skip this section where Vertcoin Core is built from source**. 
 
@@ -795,20 +236,27 @@ nuc@nuc:~$ cd unitus/
 nuc@nuc:~/unitus$
 ```
 \# Install db4.8 packages 
-```nuc@nuc:~/unitus$ sudo apt-get install software-properties-common
+```
+nuc@nuc:~/unitus$ sudo apt-get install software-properties-common
 nuc@nuc:~/unitus$ sudo add-apt-repository ppa:bitcoin/bitcoin
 nuc@nuc:~/unitus$ sudo apt-get update
-nuc@nuc:~/unitus$ sudo apt-get install libdb4.8-dev libdb4.8++-dev```
+nuc@nuc:~/unitus$ sudo apt-get install libdb4.8-dev libdb4.8++-dev
+```
 #### Memory Requirements
 C++ compilers are memory-hungry. It is recommended to have at least 1.5 GB of memory available when compiling Bitcoin Core. On systems with less, gcc can be tuned to conserve memory with additional CXXFLAGS:
 
 `NOTE:` The Intel NUC used in this guide has 4-8GB of RAM, if you have less than 1.5GB of RAM configure with the flags specified below.
+
 ```
 ./configure CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768"
 ```
+
 #### Building the Unitus Core daemon
-`nuc@nuc:~/unitus$ ./autogen.sh`  
-`nuc@nuc:~/unitus$ ./configure`  
+```
+nuc@nuc:~/unitus$ ./autogen.sh 
+nuc@nuc:~/unitus$ ./configure
+```
+
 ```
 Options used to compile and link:
   with wallet   = yes
@@ -829,8 +277,13 @@ Options used to compile and link:
   CXX           = g++ -std=c++11
   CXXFLAGS      = -g -O2 -Wall -Wextra -Wformat -Wvla -Wformat-security -Wno-unused-parameter
   LDFLAGS       =
-```# compiling unitus core will take some time
-nuc@nuc:~/unitus$ make```
+```
+
+\# compiling unitus core will take some time
+
+```
+nuc@nuc:~/unitus$ make
+```
 ```
 Making all in src
 make[1]: Entering directory '/home/nuc/unitus/src'
@@ -963,7 +416,8 @@ Once the blockchain files have finished copying to your Intel NUC, move back ove
 \# Change directories back to home`~/`   
 `nuc@nuc:~/unitus$ cd`
 
-\# Start the unitus daemon and begin blockchain sync```
+\# Start the unitus daemon and begin blockchain sync
+```
 nuc@nuc:~$ unitusd &
 [1] 2859
 nuc@nuc:~$ Unitus server starting
@@ -981,7 +435,9 @@ nuc@nuc:~$ tail -f .unitus/debug.log
 2018-05-20 23:10:54 Opened LevelDB successfully
 2018-05-20 23:10:54 Using obfuscation key for /home/nuc/.unitus/chainstate: 74c83329213bba46
 ```
+
 #### Quick note about blockchain syncing
+
 ```
 You can monitor system resources by issuing the htop command and check up on 
 unitusd by issuing the following commands: 
@@ -1008,7 +464,8 @@ For ease of use we will create a shell script to launch P2Pool for us, rather th
 
 \# Create `start-p2pool.sh` script  
 `nuc@nuc:~$ nano start-p2pool.sh`  
-```#!/bin/bash
+```
+#!/bin/bash
 
 # network 1 = --net vertcoin
 # network 2 = --net vertcoin2
@@ -1026,12 +483,12 @@ nohup python run_p2pool.py --net vertcoin2 -a yourvertcoinaddressgoeshere --merg
 
 \# Give permissions to `start-p2pool.sh`  
 `nuc@nuc:~$ chmod +x start-p2pool.sh`  
-
+```
 #### Start P2Pool
 ```
-nuc@nuc:~$ ./start-p2pool.sh &
-[1] 2920
+nuc@nuc:~$ ./start-p2pool.sh & [1] 2920
 ```
+
 \# Display output of Unitus debug.log; ctrl+c to stop  
 `nuc@nuc:~$ tail -f p2pool-vtc/data/vertcoin2/log`  
 ```
@@ -1069,6 +526,7 @@ nuc@nuc:~$ ./start-p2pool.sh &
 2018-05-20 19:24:59.866715 Outgoing connection to peer 174.103.130.177:9347 established. p2pool version: 1700 'a61a40f-dirty'
 2018-05-20 19:24:59.936496 Peer sent entire transaction c99d291b24f71a3165aa36b0f1de53dee6bfe376861b86d79ec78ed1b353f984 that was already received
 ```
+
 ```
 nuc@nuc:~$ unitus-cli getblockchaininfo
 {
@@ -1108,6 +566,7 @@ nuc@nuc:~$ unitus-cli getblockchaininfo
   }
 }
 ```
+
 ### Congratulations! Your Vertcoin merged mining full node with Unitus is complete! 
 #### Go to http://127.0.0.1:9181/ to view graphs and statistics!
 

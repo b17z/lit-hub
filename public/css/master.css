@@ -76,16 +76,13 @@ h1, h2, h3, h4, h5, h6 {
 #top {
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
   padding: 0 36px;
   height: 88px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
-  #top #top-brand {
-    margin-right: 52px; }
+  }
+ 
     #top #top-brand span,
     #top #top-brand a {
       background: none;
-      text-indent: -9999px;
       width: 70px;
       line-height: 11px;
       background-repeat: no-repeat; }
@@ -95,10 +92,10 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     margin: 0; }
   #top #top-nav-main {
-    padding-left: 52px;
-    border-left: 1px solid rgba(0, 0, 0, 0.15); }
+    padding-left: 390px;
+  }
     #top #top-nav-main li {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 500;
       margin-right: 40px; }
     #top #top-nav-main span,
@@ -127,7 +124,6 @@ h1, h2, h3, h4, h5, h6 {
     #top #top-nav-extra a {
       color: rgba(0, 0, 0, 0.7);
       display: inline-block;
-      border: 1px solid rgba(0, 0, 0, 0.5);
       text-decoration: none;
       line-height: 28px;
       border-radius: 28px;
@@ -661,7 +657,7 @@ body.page-account #hero {
       line-height: 40px; }
     #docs-main #side nav li a {
       display: block;
-      color: #707070;
+      color: #FFFAFB;
       text-decoration: none; }
       #docs-main #side nav li a:hover {
         color: #ff3366;
@@ -873,7 +869,7 @@ body.page-account #hero {
     background: #ebf0f6;
     margin-bottom: 24px; }
   #components .item {
-    background: #f8f8f8;
+    background: #F6F4F3;
     padding: 68px 24px 60px 24px;
     margin-bottom: 20px; }
     #components .item:hover {
@@ -887,7 +883,7 @@ body.page-account #hero {
     margin-top: 0;
     margin-bottom: 8px; }
     #components h4 a {
-      color: #3794de;
+      color: #2A9D8F;
       text-decoration: none; }
     #components h4 a:hover {
       -moz-transition: all linear 0.2s;
@@ -903,7 +899,7 @@ body.page-account #hero {
     margin-bottom: 4px; }
     #components li a {
       display: inline-block;
-      color: #3794de;
+      color: #2A9D8F;
       line-height: 24px; }
       #components li a:hover {
         -moz-transition: all linear 0.2s;
